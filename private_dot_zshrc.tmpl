@@ -1,0 +1,135 @@
+# --------
+# Terminal
+# --------
+
+# WezTerm
+if [[ -d {{ .wezterm_path }} ]]; then
+  export PATH="{{ .wezterm_path }}:$PATH"
+fi
+
+# -----
+# Shell
+# -----
+
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Aliases
+alias cat='bat'
+alias find='fd'
+alias ls='exa'
+alias grep='rg'
+alias rm='trash'
+alias relogin='exec $SHELL -l'
+alias tree='tree -C -I "node_modules|dist"'
+
+# ----------
+# Extensions
+# ----------
+
+# Starship
+eval "$(starship init zsh)"
+
+# fzf
+if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
+fi
+source "$(brew --prefix)/opt/fzf/shell/key-bindings.zsh"
+[[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
+
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!**/.git/*"'
+export FZF_DEFAULT_OPTS="--height 40% --reverse --border=sharp --margin=0,1 --color=light"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!**/.git/*"'
+export FZF_CTRL_T_OPTS="--preview 'bat  --color=always --style=header,grid {}' --preview-window=right:60%"
+
+# z
+source "$(brew --prefix)/etc/profile.d/z.sh"
+
+# asdf
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# ---------
+# Functions
+# ---------
+
+function z-cd() {
+  local res=$(z | sort -rn | cut -c 12- | fzf)
+  if [ -n "$res" ]; then
+    BUFFER+="cd $res"
+    zle accept-line
+  else
+    zle reset-prompt
+    return 1
+  fi
+}
+zle -N z-cd
+bindkey '^z' z-cd
+
+function fzf-cd() {
+  d=$( \
+    fd --type d -H \
+    -E .git \
+    -E node_modules \
+    -E .terragrunt-cache \
+    | fzf )
+
+  if [[ $d = "" ]]; then
+    zle reset-prompt
+    return
+  fi
+
+  cd $d
+  zle accept-line
+}
+zle -N fzf-cd
+bindkey "^o" fzf-cd
+
+function fzf-root-cd() {
+  export TMP_CDR_DIR=$(pwd)
+
+  while [[ $TMP_CDR_DIR != "/" ]]
+  do
+    if [ -e "$TMP_CDR_DIR/.git" ];then
+      echo $TMP_CDR_DIR
+      cd $TMP_CDR_DIR
+      break
+    else
+      export TMP_CDR_DIR=$( dirname $TMP_CDR_DIR )
+    fi
+  done
+  unset TMP_CDR_DIR
+}
+alias rcd='fzf-root-cd'
+
+function fzf-kill() {
+  local pid
+  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+
+  if [ "x$pid" != "x" ]
+  then
+    echo $pid | xargs kill -${1:-9}
+  fi
+}
+alias fkill='fzf-kill'
+
+function fzf-ghq-cd() {
+  FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --reverse --height=50%"
+  local root="$(ghq root)"
+  local repo="$(ghq list | fzf --preview="ls -AF --color=always ${root}/{1}")"
+  local dir="${root}/${repo}"
+  [ -n "${dir}" ] && cd "${dir}"
+  zle accept-line
+}
+zle -N fzf-ghq-cd
+bindkey '^g' fzf-ghq-cd
+
+function fzf-git-checkout() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+    fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+alias fgc='fzf-git-checkout'
+
