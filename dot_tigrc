@@ -1,1 +1,70 @@
-bind status D !@?rm %(file)
+# --------
+# Behavior
+# --------
+
+set mouse = true
+
+# ----
+# View
+# ----
+
+set horizontal-scroll = 33%
+set split-view-height = 80%
+set tab-size          = 2
+set wrap-lines        = yes
+set diff-highlight    = true
+set diff-options      = -m --first-parent
+
+# Specify the number of lines to display before and after the diff
+set diff-context      = 3
+
+# Main view
+set main-view               = id:yes,color date author commit-title:graph=yes,refs=yes
+set main-view-date          = custom
+set main-view-date-format   = "%Y-%m-%d %H:%M"
+
+# Tree view
+set tree-view               = id:yes,color date author mode file-size file-name
+set tree-view-date          = custom
+set tree-view-date-format   = "%Y-%m-%d %H:%M"
+
+# Blame view
+set blame-view              = id:yes,color date author line-number:yes,interval=1 text
+set blame-view-date         = custom
+set blame-view-date-format  = "%Y-%m-%d %H:%M"
+
+# ---------
+# Key binds
+# ---------
+
+bind generic  g       move-first-line
+bind generic  G       none
+bind generic  G       move-last-line
+bind main     G       move-last-line
+bind main     <Esc>g  :toggle commit-title-graph
+
+# Enable stash on ths status screen
+bind status   S       ?git stash save "%(prompt Enter stash comment: )"
+
+# Enable commit with "--amend" on the status screen
+bind status   +       !git commit --amend
+
+# Enable fetch on all screens
+bind generic  F       ?git fetch %(remote)
+bind generic  <Esc>f  :toggle file-name
+bind main     F ?git  fetch %(remote)
+bind main     <Esc>f  :toggle commit-title-refs
+
+# Enable pull on all screens
+bind generic  U       ?git pull %(remote)
+
+# Enable push on main and status screens
+bind main     P       ?git push -u %(remote) %(repo:head)
+bind status   P       ?git push -u %(remote) %(repo:head)
+
+# Enable rebase on main and diff screens
+bind main     B       !git rebase -i %(commit)
+bind diff     B       !git rebase -i %(commit)
+
+# Press "Shift + d" on the status screen to delete the file
+bind status   D       !@?rm %(file)

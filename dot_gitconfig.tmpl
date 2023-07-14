@@ -3,3 +3,9 @@
 	email = {{ .email }}
 [ghq]
 	root = ~/Sources
+[pager]
+    log = {{ .git_diff_highlight_path }}/diff-highlight | less
+    show = {{ .git_diff_highlight_path }}/diff-highlight | less
+    diff = {{ .git_diff_highlight_path }}/diff-highlight | less
+[fetch]
+    prune = true
