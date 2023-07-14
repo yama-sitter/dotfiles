@@ -1,3 +1,42 @@
+# -----
+# Shell
+# -----
+
+setopt share_history
+setopt auto_param_keys
+setopt correct
+setopt hist_ignore_all_dups
+
+export HISTSIZE=1000
+export SAVEHIST=10000
+
+# Completion
+[ -d $HOME/{{ .zsh_completion_path }} ] && fpath=($HOME/{{ .zsh_completion_path }} $fpath)
+autoload -Uz compinit
+compinit -u
+
+# Aliases
+alias c='chezmoi'
+alias sheldon='EDITOR=vim sheldon'
+alias s='EDITOR=vim sheldon'
+alias cat='bat'
+alias find='fd'
+alias ls='exa -laG'
+alias grep='rg'
+alias rm='trash'
+alias relogin='exec $SHELL -l'
+alias tree='tree -C -I "node_modules|dist"'
+
+# ---------------
+# Package manager
+# ---------------
+
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# sheldon
+eval "$(sheldon source)"
+
 # --------
 # Terminal
 # --------
@@ -6,23 +45,6 @@
 if [[ -d {{ .wezterm_path }} ]]; then
   export PATH="{{ .wezterm_path }}:$PATH"
 fi
-
-# -----
-# Shell
-# -----
-
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# Aliases
-alias c='chezmoi'
-alias cat='bat'
-alias find='fd'
-alias ls='exa -laG'
-alias grep='rg'
-alias rm='trash'
-alias relogin='exec $SHELL -l'
-alias tree='tree -C -I "node_modules|dist"'
 
 # ----------
 # Extensions
@@ -115,7 +137,6 @@ function fzf-kill() {
 alias fkill='fzf-kill'
 
 function fzf-ghq-cd() {
-  FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --reverse --height=50%"
   local root="$(ghq root)"
   local repo="$(ghq list | fzf --preview="ls -AF --color=always ${root}/{1}")"
   local dir="${root}/${repo}"
