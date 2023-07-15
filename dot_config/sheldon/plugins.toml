@@ -12,9 +12,9 @@ defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 github = 'zsh-users/zsh-autosuggestions'
 use = ["{{ name }}.zsh"]
 
-[plugins.zsh-syntax-highlighting]
-github = 'zsh-users/zsh-syntax-highlighting'
-
 [plugins.zsh-completions]
 github = 'zsh-users/zsh-completions'
+
+[plugins.zsh-syntax-highlighting]
+github = 'zsh-users/zsh-syntax-highlighting'
 
