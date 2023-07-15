@@ -76,7 +76,10 @@ source "$(brew --prefix)/etc/profile.d/z.sh"
 [ -d $HOME/{{ .zsh_completion_path }} ] && fpath=($HOME/{{ .zsh_completion_path }} $fpath)
 
 # Homebrew
-[ type brew &>/dev/null ] && fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+if type brew &>/dev/null
+then
+  fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+fi
 
 autoload -Uz compinit
 compinit -u
