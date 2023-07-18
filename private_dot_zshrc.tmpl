@@ -11,19 +11,21 @@ export HISTSIZE=1000
 export SAVEHIST=10000
 
 # Aliases
+alias relogin='exec $SHELL -l'
 alias c='chezmoi'
+alias ca='chezmoi add'
+alias ce='chezmoi edit'
 alias sheldon='EDITOR=vim sheldon'
 alias s='EDITOR=vim sheldon'
+alias vim='nvim'
+alias vi='nvim'
 alias cat='bat'
 alias find='fd'
 alias ls='exa -laG'
 alias grep='rg'
 alias rm='trash'
-alias relogin='exec $SHELL -l'
 alias tree='tree -C -I "node_modules|dist"'
 alias diff='colordiff -c'
-alias vim='nvim'
-alias vi='nvim'
 
 # ---------------
 # Package manager
