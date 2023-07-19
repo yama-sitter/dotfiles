@@ -1,4 +1,5 @@
 {
+  "gitsigns.nvim": { "branch": "main", "commit": "adcf2c7f2f495f5df148683764bf7cba6a70f34c" },
   "lazy.nvim": { "branch": "main", "commit": "25beed5e2e935ebc00d7e3eed1dc502df3c40e39" },
   "nord.nvim": { "branch": "master", "commit": "fab04b2dd4b64f4b1763b9250a8824d0b5194b8f" },
   "vimdoc-ja": { "branch": "master", "commit": "7c164ea4295f1c37b0c16f908bc956aa8d8a69ac" }
