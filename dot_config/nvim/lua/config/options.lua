@@ -1,8 +1,48 @@
-vim.opt.number = true
-vim.bo.expandtab = true
-vim.bo.shiftwidth = 2
-vim.bo.tabstop = 2
-vim.opt.ambiwidth = 'double'
-vim.opt.clipboard:append({unnamedplus = true})
-vim.opt.helplang = 'ja,en'
+vim.scriptencoding = "utf-8"
 
+local options = {
+  helplang = 'ja,en',
+  encoding = 'utf-8',
+  fileencoding = 'utf-8',
+  ambiwidth = 'double',
+  termguicolors = true,
+  swapfile = false,
+  backup = false,
+  writebackup = false,
+  undofile = true,
+  number = true,
+  title = true,
+  showcmd = true,
+  showmode = false,
+  showtabline = 2,
+  tabline = '%t',
+  hidden = true,
+  signcolumn = 'yes',
+  splitright = true,
+  splitbelow = true,
+  cmdheight = 0,
+  wrap = false,
+  display = 'lastline',
+  hlsearch = true,
+  incsearch = true,
+  ignorecase = true,
+  smartcase = true,
+  showmatch = false,
+  scrolloff = 8,
+  sidescrolloff = 8,
+  virtualedit = 'block',
+  expandtab = true,
+  shiftwidth = 2,
+  autoindent = true,
+  smartindent = true,
+  tabstop = 2,
+  conceallevel = 0,
+  completeopt = { 'menuone', 'noinsert', 'noselect' },
+  pumheight = 10,
+  clipboard = 'unnamedplus',
+  mouse = 'a',
+}
+
+for k, v in pairs(options) do
+	vim.opt[k] = v
+end
