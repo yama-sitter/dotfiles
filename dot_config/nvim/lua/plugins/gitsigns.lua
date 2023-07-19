@@ -4,13 +4,14 @@ return {
     config = function()
       require('gitsigns').setup {
         signs = {
-          add          = { hl = 'GitSignsAdd'   , text = '+' },
-          change       = { hl = 'GitSignsChange', text = '~' },
-          delete       = { hl = 'GitSignsDelete', text = '▁' },
-          topdelete    = { hl = 'GitSignsDelete', text = '‾' },
-          changedelete = { hl = 'GitSignsChange', text = '~_' },
-          untracked    = { hl = 'GitSignsAdd'   , text = '┆' },
+          change       = { numhl = 'GitSignsChangeNr' },
+          delete       = { numhl = 'GitSignsDeleteNr' },
+          topdelete    = { numhl = 'GitSignsDeleteNr' },
+          changedelete = { numhl = 'GitSignsChangeNr' },
+          untracked    = { numhl = 'GitSignsAddNr'    },
         },
+        signcolumn = false,
+        numhl = true,
         current_line_blame = true,
         current_line_blame_opts = {
           delay = 300,
