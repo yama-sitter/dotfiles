@@ -1,6 +1,7 @@
 return {
   {
     'lewis6991/gitsigns.nvim',
+    event = { 'VeryLazy' },
     config = function()
       require('gitsigns').setup {
         signs = {
@@ -39,12 +40,12 @@ return {
           end, {expr=true})
 
           map('n', '<leader>hd', gs.diffthis)
+          map('n', '<leader>hl', gs.setqflist)
           map('n', '<leader>hb', function() gs.blame_line{full=true} end)
           map('n', '<leader>hb', function() gs.blame_line{full=true} end)
         end,
       }
     end,
-    event = { 'VeryLazy' },
   },
 }
 
