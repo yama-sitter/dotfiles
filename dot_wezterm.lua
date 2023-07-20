@@ -82,30 +82,23 @@ config.keys = {
   },
   {
     key = 'h',
-    mods = 'CTRL|CMD',
+    mods = 'SHIFT|CMD',
     action = act.ActivatePaneDirection 'Left',
   },
   {
     key = 'l',
-    mods = 'CTRL|CMD',
+    mods = 'SHIFT|CMD',
     action = act.ActivatePaneDirection 'Right',
   },
   {
     key = 'k',
-    mods = 'CTRL|CMD',
+    mods = 'SHIFT|CMD',
     action = act.ActivatePaneDirection 'Up',
   },
   {
     key = 'j',
-    mods = 'CTRL|CMD',
+    mods = 'SHIFT|CMD',
     action = act.ActivatePaneDirection 'Down',
-  },
-  {
-    key = 'p',
-    mods = 'CTRL|CMD',
-    action = act.PaneSelect {
-      alphabet = '1234567890',
-    }
   },
 }
 
