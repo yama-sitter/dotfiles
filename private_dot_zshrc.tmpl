@@ -171,3 +171,21 @@ function fzf-git-checkout() {
 }
 alias fgc='fzf-git-checkout'
 
+function fzf-edit-vim() {
+  local file
+  file="$(
+    rg --files --hidden --follow --glob "!**/.git/*" | fzf \
+      --preview 'bat  --color=always --style=header,grid {}' --preview-window=right:60%
+  )"
+  if [[ -n "$file" ]]; then
+    vi "$file"
+    print -s "vi $file" # Append to command history
+    zle accept-line
+  else
+    zle reset-prompt
+    return 1
+  fi
+}
+zle -N fzf-edit-vim
+bindkey '^e' fzf-edit-vim
+
