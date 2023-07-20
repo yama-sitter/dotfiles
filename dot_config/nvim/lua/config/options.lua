@@ -15,7 +15,6 @@ local options = {
   showcmd = true,
   showmode = false,
   showtabline = 2,
-  tabline = '%t',
   hidden = true,
   signcolumn = 'number',
   splitright = true,
