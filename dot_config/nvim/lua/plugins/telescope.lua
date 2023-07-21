@@ -1,5 +1,12 @@
 return {
   {
+    'nvim-telescope/telescope-file-browser.nvim',
+    event = 'VeryLazy',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+    },
+  },
+  {
     'nvim-telescope/telescope.nvim',
     event = 'VeryLazy',
     dependencies = {
@@ -7,6 +14,8 @@ return {
       'BurntSushi/ripgrep',
     },
     config = function()
+      require('telescope').load_extension 'file_browser'
+
       require('telescope').setup {
         defaults = {
           mappings = {
@@ -32,20 +41,21 @@ return {
           },
         },
         extensions = {
-          fzf = {
-            fuzzy = true,
-            override_generic_sorter = false,
-            override_file_sorter = true,
-            case_mode = 'smart_case',
-          }
+          file_browser = {
+            theme = 'dropdown',
+            hijack_netrw = true,
+          },
         },
       }
 
       local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>f', builtin.find_files, {})
-      vim.keymap.set('n', '<leader>b', builtin.buffers, {})
-      vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
-      vim.keymap.set('n', '<leader>h', builtin.help_tags, {})
+      local options = { noremap = true }
+      vim.keymap.set('n', '<leader>o', builtin.find_files, options)
+      vim.keymap.set('n', '<leader>b', builtin.buffers, options)
+      vim.keymap.set('n', '<leader>g', builtin.live_grep, options)
+      vim.keymap.set('n', '<leader>h', builtin.help_tags, options)
+      vim.keymap.set('n', '<leader>k', builtin.keymaps, options)
+      vim.keymap.set('n', '<leader>f', ':Telescope file_browser<CR>', options)
     end,
   },
 }
