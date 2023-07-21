@@ -122,9 +122,9 @@ function fzf-cd() {
   zle accept-line
 }
 zle -N fzf-cd
-bindkey "^o" fzf-cd
+bindkey "^f" fzf-cd
 
-function fzf-root-cd() {
+function root-cd() {
   export TMP_CDR_DIR=$(pwd)
 
   while [[ $TMP_CDR_DIR != "/" ]]
@@ -139,7 +139,7 @@ function fzf-root-cd() {
   done
   unset TMP_CDR_DIR
 }
-alias rcd='fzf-root-cd'
+alias rcd='root-cd'
 
 function fzf-kill() {
   local pid
@@ -164,12 +164,19 @@ bindkey '^g' fzf-ghq-cd
 
 function fzf-git-checkout() {
   local branches branch
-  branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" |
-    fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+  branches=$(git branch --all | grep -v HEAD)
+  branch=$(echo "$branches" | fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m)
+
+  if [[ -n $branch ]]; then
+    git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+    zle accept-line
+  else
+    zle reset-prompt
+    return 1
+  fi 
 }
-alias fgc='fzf-git-checkout'
+zle -N fzf-git-checkout
+bindkey '^k' fzf-git-checkout
 
 function fzf-edit-vim() {
   local file
@@ -187,5 +194,5 @@ function fzf-edit-vim() {
   fi
 }
 zle -N fzf-edit-vim
-bindkey '^e' fzf-edit-vim
+bindkey '^o' fzf-edit-vim
 
