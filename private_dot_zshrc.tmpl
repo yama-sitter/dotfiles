@@ -64,7 +64,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!**/.git/*"'
 export FZF_DEFAULT_OPTS="--height 40% --reverse --border=sharp --margin=0,1 --color=light"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!**/.git/*"'
-export FZF_CTRL_T_OPTS="--preview 'bat  --color=always --style=header,grid {}' --preview-window=right:60%"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=header,grid {}' --preview-window=right:60%"
 
 # z
 source "$(brew --prefix)/etc/profile.d/z.sh"
@@ -122,7 +122,7 @@ function fzf-cd() {
   zle accept-line
 }
 zle -N fzf-cd
-bindkey "^f" fzf-cd
+bindkey "^o" fzf-cd
 
 function root-cd() {
   export TMP_CDR_DIR=$(pwd)
@@ -176,7 +176,7 @@ function fzf-git-checkout() {
   fi 
 }
 zle -N fzf-git-checkout
-bindkey '^k' fzf-git-checkout
+bindkey '^x' fzf-git-checkout
 
 function fzf-edit-vim() {
   local file
@@ -194,5 +194,5 @@ function fzf-edit-vim() {
   fi
 }
 zle -N fzf-edit-vim
-bindkey '^o' fzf-edit-vim
+bindkey '^v' fzf-edit-vim
 
