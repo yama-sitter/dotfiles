@@ -1,13 +1,12 @@
 {
   "fern.vim": { "branch": "main", "commit": "cdec1327ec99f0155d0a53aee1beae4c58071558" },
   "gitsigns.nvim": { "branch": "main", "commit": "adcf2c7f2f495f5df148683764bf7cba6a70f34c" },
-  "lazy.nvim": { "branch": "main", "commit": "25beed5e2e935ebc00d7e3eed1dc502df3c40e39" },
+  "lazy.nvim": { "branch": "main", "commit": "50c365bfe972daa9352a0e62bb78fc7254cffeac" },
   "lualine.nvim": { "branch": "master", "commit": "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9" },
   "nord.nvim": { "branch": "master", "commit": "fab04b2dd4b64f4b1763b9250a8824d0b5194b8f" },
   "nvim-bqf": { "branch": "main", "commit": "3460a1ccf4dc92a52ed7fe2012f02a9194cd84d2" },
   "plenary.nvim": { "branch": "master", "commit": "267282a9ce242bbb0c5dc31445b6d353bed978bb" },
   "ripgrep": { "branch": "master", "commit": "304a60e8e9d4b2a42dc3dfb1ba4cef6d7bf92515" },
-  "tabline.nvim": { "branch": "main", "commit": "1f77f520249d508eebff462e103ed699ecf5dc5f" },
   "telescope.nvim": { "branch": "master", "commit": "47c755d737702df7a39b640c8d9c473a728be1df" },
   "vimdoc-ja": { "branch": "master", "commit": "7c164ea4295f1c37b0c16f908bc956aa8d8a69ac" }
 }
