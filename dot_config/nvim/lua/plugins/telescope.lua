@@ -51,7 +51,7 @@ return {
       local builtin = require('telescope.builtin')
       local options = { noremap = true }
       vim.keymap.set('n', '<leader>o', builtin.find_files, options)
-      vim.keymap.set('n', '<leader>b', builtin.buffers, options)
+      vim.keymap.set('n', '<leader>u', builtin.buffers, options)
       vim.keymap.set('n', '<leader>g', builtin.live_grep, options)
       vim.keymap.set('n', '<leader>h', builtin.help_tags, options)
       vim.keymap.set('n', '<leader>k', builtin.keymaps, options)
