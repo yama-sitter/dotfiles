@@ -1,13 +1,16 @@
 [user]
 	name = yama-sitter
 	email = {{ .email }}
+[core]
+  editor = nvim -u ~/.config/nvim/init.lua
+[pager]
+  log = {{ .git_diff_highlight_path }}/diff-highlight | less
+  show = {{ .git_diff_highlight_path }}/diff-highlight | less
+  diff = {{ .git_diff_highlight_path }}/diff-highlight | less
+[fetch]
+  prune = true
+[commit]
+  verbose = true
 [ghq]
 	root = ~/Sources
-[pager]
-    log = {{ .git_diff_highlight_path }}/diff-highlight | less
-    show = {{ .git_diff_highlight_path }}/diff-highlight | less
-    diff = {{ .git_diff_highlight_path }}/diff-highlight | less
-[fetch]
-    prune = true
-[commit]
-    verbose = true
+
