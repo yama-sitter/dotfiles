@@ -8,7 +8,7 @@ local options = { noremap = true }
 map('n', '<leader><esc>', ':nohlsearch<cr>', options)
 
 -- Buffers
-map('n', '<C-l>', ':bn<cr>', options)
-map('n', '<C-h>', ':bp<cr>', options)
-map('n', '<C-q>', ':b#<cr>:bd#<cr>', options)
+map('n', '<C-l>', ':bn<CR>', options)
+map('n', '<C-h>', ':bp<CR>', options)
+map('n', '<C-q>', ':b#<CR>:bd#<CR>', options)
 

@@ -1,5 +1,4 @@
 {
-  "fern.vim": { "branch": "main", "commit": "cdec1327ec99f0155d0a53aee1beae4c58071558" },
   "gitsigns.nvim": { "branch": "main", "commit": "adcf2c7f2f495f5df148683764bf7cba6a70f34c" },
   "lazy.nvim": { "branch": "main", "commit": "50c365bfe972daa9352a0e62bb78fc7254cffeac" },
   "lualine.nvim": { "branch": "master", "commit": "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9" },
