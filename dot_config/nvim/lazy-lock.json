@@ -1,4 +1,5 @@
 {
+  "bclose.vim": { "branch": "master", "commit": "99018b4a2dd18aea1cbd3aa23565b01a0f8c5b73" },
   "gitsigns.nvim": { "branch": "main", "commit": "adcf2c7f2f495f5df148683764bf7cba6a70f34c" },
   "lazy.nvim": { "branch": "main", "commit": "ed15f6b39422f46412212005f6d12c6f353b0293" },
   "lualine.nvim": { "branch": "master", "commit": "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9" },
@@ -8,5 +9,6 @@
   "ripgrep": { "branch": "master", "commit": "304a60e8e9d4b2a42dc3dfb1ba4cef6d7bf92515" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "e03ff55962417b69c85ef41424079bb0580546ba" },
   "telescope.nvim": { "branch": "master", "commit": "47c755d737702df7a39b640c8d9c473a728be1df" },
+  "tig-explorer.vim": { "branch": "master", "commit": "a75ee59636bc0a1659d372e3a4e8b35d167e3df5" },
   "vimdoc-ja": { "branch": "master", "commit": "7c164ea4295f1c37b0c16f908bc956aa8d8a69ac" }
 }
