@@ -3,7 +3,13 @@ return {
   {
     'hoob3rt/lualine.nvim',
     event = 'VeryLazy',
+    dependencies = {
+      'catppuccin/nvim',
+    },
     opts = {
+      options = {
+        theme = 'catppuccin'
+      },
       tabline = {
         lualine_a = { 'buffers' },
         lualine_b = {},
