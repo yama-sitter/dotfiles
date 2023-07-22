@@ -30,15 +30,12 @@ return {
           },
         },
         pickers = {
-          find_files = {
-            theme = 'dropdown',
-          },
-          buffers = {
-            theme = 'dropdown',
-          },
-          live_grep = {
-            theme = 'dropdown',
-          },
+          find_files  = { theme = 'dropdown' },
+          buffers     = { theme = 'dropdown' },
+          live_grep   = { theme = 'dropdown' },
+          help_tags   = { theme = 'dropdown' },
+          keymaps     = { theme = 'dropdown' },
+          diagnostics = { theme = 'dropdown' },
         },
         extensions = {
           file_browser = {
@@ -49,13 +46,14 @@ return {
       }
 
       local builtin = require('telescope.builtin')
-      local options = { noremap = true }
-      vim.keymap.set('n', '<leader>o', builtin.find_files, options)
-      vim.keymap.set('n', '<leader>u', builtin.buffers, options)
-      vim.keymap.set('n', '<leader>g', builtin.live_grep, options)
-      vim.keymap.set('n', '<leader>h', builtin.help_tags, options)
-      vim.keymap.set('n', '<leader>k', builtin.keymaps, options)
-      vim.keymap.set('n', '<leader>f', ':Telescope file_browser<CR>', options)
+      local opts = { noremap = true }
+      vim.keymap.set('n', '<leader>o', builtin.find_files, opts)
+      vim.keymap.set('n', '<leader>u', builtin.buffers, opts)
+      vim.keymap.set('n', '<leader>g', builtin.live_grep, opts)
+      vim.keymap.set('n', '<leader>h', builtin.help_tags, opts)
+      vim.keymap.set('n', '<leader>k', builtin.keymaps, opts)
+      vim.keymap.set('n', '<leader>d', builtin.diagnostics, opts)
+      vim.keymap.set('n', '<leader>f', ':Telescope file_browser<CR>', opts)
     end,
   },
 }
