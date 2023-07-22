@@ -20,12 +20,12 @@ return {
         defaults = {
           mappings = {
             i = {
-              ["<esc>"] = 'close',
-              ["<C-j>"] = 'move_selection_next',
-              ["<C-k>"] = 'move_selection_previous',
+              ['<esc>'] = 'close',
+              ['<C-j>'] = 'move_selection_next',
+              ['<C-k>'] = 'move_selection_previous',
             },
             n = {
-              ["q"] = 'close',
+              ['q'] = 'close',
             },
           },
         },

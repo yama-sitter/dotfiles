@@ -1,4 +1,4 @@
-vim.scriptencoding = "utf-8"
+vim.scriptencoding = 'utf-8'
 
 local options = {
   helplang = 'ja,en',
