@@ -9,7 +9,7 @@ end
 -- Appearance
 -------------
 
-config.color_scheme = 'nord'
+config.color_scheme = 'catppuccin-mocha'
 config.window_background_opacity = 0.85
 
 -- Change saturation and lightness of inactive panes
