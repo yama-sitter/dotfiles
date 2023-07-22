@@ -14,7 +14,15 @@ return {
       },
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff' },
+        lualine_b = {
+          'branch',
+          'diff',
+          {
+            'diagnostics',
+            sources = { 'nvim_diagnostic', 'nvim_lsp' },
+            symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+          },
+        },
         lualine_c = {
           {
             'filename',
@@ -29,12 +37,7 @@ return {
           },
         },
         lualine_x = { 'filetype', 'encoding' },
-        lualine_y = {
-          {
-            'diagnostics',
-            source = { 'nvim-lsp' },
-          },
-        },
+        lualine_y = { 'progress' },
         lualine_z = { 'location' }
       },
       inactive_sections = {
