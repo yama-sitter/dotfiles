@@ -28,7 +28,7 @@ return {
       end
 
       local opts = { noremap = true }
-      vim.keymap.set({ 'n' }, '<leader>s', show_documentation, opts)
+      vim.keymap.set('n', '<leader>s', show_documentation, opts)
     end,
   },
 }
