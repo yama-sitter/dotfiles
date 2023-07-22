@@ -10,6 +10,7 @@ local options = {
   backup = false,
   writebackup = false,
   undofile = true,
+  updatetime = 300,
   number = true,
   title = true,
   showcmd = true,
