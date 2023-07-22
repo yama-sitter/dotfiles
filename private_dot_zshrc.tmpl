@@ -94,7 +94,7 @@ compinit -u
 
 function z-cd() {
   local res=$(z | sort -rn | cut -c 12- | fzf)
-  if [ -n "$res" ]; then
+  if [ -n "${res}" ]; then
     BUFFER+="cd $res"
     zle accept-line
   else
@@ -155,9 +155,13 @@ alias fkill='fzf-kill'
 function fzf-ghq-cd() {
   local root="$(ghq root)"
   local repo="$(ghq list | fzf --preview="ls -AF --color=always ${root}/{1}")"
-  local dir="${root}/${repo}"
-  [ -n "${dir}" ] && cd "${dir}"
-  zle accept-line
+  if [ -n "${repo}" ]; then
+    cd "${root}/${repo}"
+    zle accept-line
+  else
+    zle reset-prompt
+    return 1
+  fi
 }
 zle -N fzf-ghq-cd
 bindkey '^g' fzf-ghq-cd
@@ -167,7 +171,7 @@ function fzf-git-checkout() {
   branches=$(git branch --all | grep -v HEAD)
   branch=$(echo "$branches" | fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m)
 
-  if [[ -n $branch ]]; then
+  if [[ -n "${branch}" ]]; then
     git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
     zle accept-line
   else
@@ -184,7 +188,7 @@ function fzf-edit-vim() {
     rg --files --hidden --follow --glob "!**/.git/*" | fzf \
       --preview 'bat  --color=always --style=header,grid {}' --preview-window=right:60%
   )"
-  if [[ -n "$file" ]]; then
+  if [[ -n "${file}" ]]; then
     vi "$file"
     print -s "vi $file" # Append to command history
     zle accept-line
