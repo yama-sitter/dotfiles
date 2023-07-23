@@ -7,7 +7,7 @@ return {
     config = function()
       -- Allow 2-byte character icons to be displayed
       vim.fn.setcellwidths {
-        { 0xf835, 0xf835, 1 },
+        { 0xf834, 0xf834, 1 },
       }
 
       require('lspsaga').setup {}
