@@ -25,8 +25,9 @@ return {
         end
       end
 
-      local opts = { noremap = true }
+      local opts = { noremap = true, silent = true }
       vim.keymap.set('n', '<leader>s', show_documentation, opts)
+      vim.keymap.set('n', '<leader>ca', ':Lspsaga code_action<CR>', opts)
     end,
   },
 }
