@@ -7,8 +7,7 @@ return {
         hi BqfPreviewBorder guifg=#5e81ac ctermfg=71
       ]])
       
-      -- The base 'ambiwidth' is 2, but only the ruled lines should be set to 1
-      -- If this is not set, 'nvim_open_win()' throws an error on the bqf preview screen
+      -- Allow 2-byte character icons to be displayed
       vim.fn.setcellwidths {
         { 0x2501, 0x2501, 1 },
         { 0x2503, 0x2503, 1 },

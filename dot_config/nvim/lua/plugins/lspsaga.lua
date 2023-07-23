@@ -5,9 +5,12 @@ return {
       'nvim-treesitter/nvim-treesitter',
     },
     config = function()
-      require('lspsaga').setup {
-        code_action_icon = '',
+      -- Allow 2-byte character icons to be displayed
+      vim.fn.setcellwidths {
+        { 0xf835, 0xf835, 1 },
       }
+
+      require('lspsaga').setup {}
 
       vim.api.nvim_create_augroup('ShowLineDiagnostics', {})
       vim.api.nvim_create_autocmd({ 'CursorHold' }, {
