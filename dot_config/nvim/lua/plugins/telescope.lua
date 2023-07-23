@@ -14,7 +14,7 @@ return {
       'BurntSushi/ripgrep',
     },
     config = function()
-      require('telescope').load_extension 'file_browser'
+      require('telescope').load_extension('file_browser')
 
       require('telescope').setup {
         defaults = {
