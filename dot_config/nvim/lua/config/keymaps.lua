@@ -1,9 +1,9 @@
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 
 vim.g.mapleader = ' '
 map('n', '<Space>', '', {})
 
-local options = { noremap = true }
+local options = { noremap = true, silent = true }
 
 map('n', '<leader><esc>', ':nohlsearch<cr>', options)
 
