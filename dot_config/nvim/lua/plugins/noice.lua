@@ -12,12 +12,6 @@ return {
         background_colour = '#000000'
       }
 
-      -- Allow 2-byte character icons to be displayed when entering commands
-      vim.fn.setcellwidths {
-        { 0xf7d5, 0xf7d5, 1 },
-        { 0xf002, 0xf002, 1 },
-      }
-
       require('noice').setup {
         presets = {
           command_palette = true,

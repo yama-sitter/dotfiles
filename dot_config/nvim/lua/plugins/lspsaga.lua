@@ -5,11 +5,6 @@ return {
       'nvim-treesitter/nvim-treesitter',
     },
     config = function()
-      -- Allow 2-byte character icons to be displayed
-      vim.fn.setcellwidths {
-        { 0xf834, 0xf834, 1 },
-      }
-
       require('lspsaga').setup {}
 
       vim.api.nvim_create_augroup('ShowLineDiagnostics', {})
