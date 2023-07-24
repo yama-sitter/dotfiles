@@ -8,6 +8,7 @@
   "cmp-nvim-lsp": { "branch": "main", "commit": "44b16d11215dce86f253ce0c30949813c0a90765" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "18095520391186d634a0045dacaa346291096566" },
+  "efm-langserver": { "branch": "master", "commit": "2683446e8d6681f7806cbc602f4e83d67b7fe290" },
   "friendly-snippets": { "branch": "main", "commit": "4aed1a0ca605cb1c87f59799a0cc4afe00a40272" },
   "gitsigns.nvim": { "branch": "main", "commit": "adcf2c7f2f495f5df148683764bf7cba6a70f34c" },
   "inc-rename.nvim": { "branch": "main", "commit": "ed0f6f2b917cac4eb3259f907da0a481b27a3b7e" },
