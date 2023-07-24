@@ -1,10 +1,10 @@
-
 return {
   {
     'hoob3rt/lualine.nvim',
     event = 'VeryLazy',
     dependencies = {
       'catppuccin/nvim',
+       'nvim-tree/nvim-web-devicons',
     },
     opts = {
       options = {
@@ -26,7 +26,6 @@ return {
           {
             'diagnostics',
             sources = { 'nvim_diagnostic', 'nvim_lsp' },
-            symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
           },
         },
         lualine_c = {

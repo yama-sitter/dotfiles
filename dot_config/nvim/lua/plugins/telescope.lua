@@ -1,3 +1,4 @@
+loc
 return {
   {
     'nvim-telescope/telescope-file-browser.nvim',
@@ -12,6 +13,7 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'BurntSushi/ripgrep',
+       'nvim-tree/nvim-web-devicons',
     },
     config = function()
       require('telescope').load_extension('file_browser')
