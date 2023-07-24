@@ -87,7 +87,7 @@ return {
               },
               buffer = bufnr,
               callback = function()
-                vim.lsp.buf.format({ async = true })
+                vim.lsp.buf.format()
               end,
             })
           end
