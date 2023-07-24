@@ -7,14 +7,13 @@ return {
     config = function()
       require('lspsaga').setup {}
 
-      vim.api.nvim_create_augroup('ShowLineDiagnostics', {})
+      --[[ vim.api.nvim_create_augroup('ShowLineDiagnostics', {})
       vim.api.nvim_create_autocmd({ 'CursorHold' }, {
         group = 'ShowLineDiagnostics',
-        pattern = { '*' },
         callback = function()
           require('lspsaga.diagnostic').show_line_diagnostics()
         end,
-      })
+      }) ]]
 
       local function show_documentation()
         local ft = vim.opt.filetype._value
