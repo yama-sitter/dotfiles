@@ -14,6 +14,9 @@ return {
           mason = true,
           cmp = true,
           treesitter = true,
+          aerial = true,
+          noice = true,
+          notify = true,
           telescope = {
             enabled = true,
           },
