@@ -31,9 +31,14 @@ return {
           },
         },
         pickers = {
+          live_grep = {
+            theme = 'dropdown',
+            additional_args = function()
+              return { '--hidden' }
+            end,
+          },
           find_files            = { theme = 'dropdown' },
           buffers               = { theme = 'dropdown' },
-          live_grep             = { theme = 'dropdown' },
           help_tags             = { theme = 'dropdown' },
           keymaps               = { theme = 'dropdown' },
           diagnostics           = { theme = 'dropdown' },
@@ -50,8 +55,12 @@ return {
       }
 
       local builtin = require('telescope.builtin')
+      local function find_files()
+        builtin.find_files(({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }}))
+      end
+
       local opts = { noremap = true }
-      vim.keymap.set('n', '<leader>o', builtin.find_files, opts)
+      vim.keymap.set('n', '<leader>o', find_files, opts)
       vim.keymap.set('n', '<leader>b', builtin.buffers, opts)
       vim.keymap.set('n', '<leader>g', builtin.live_grep, opts)
       vim.keymap.set('n', '<leader>h', builtin.help_tags, opts)
