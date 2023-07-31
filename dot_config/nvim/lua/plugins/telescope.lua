@@ -12,10 +12,12 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'BurntSushi/ripgrep',
-       'nvim-tree/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
     },
     config = function()
       require('telescope').load_extension('file_browser')
+
+      local fb_actions = require('telescope').extensions.file_browser.actions
 
       require('telescope').setup {
         defaults = {
@@ -32,20 +34,20 @@ return {
           },
         },
         pickers = {
-          live_grep = {
+          live_grep            = {
             theme = 'dropdown',
             additional_args = function()
               return { '--hidden' }
             end,
           },
-          find_files            = { theme = 'dropdown' },
-          buffers               = { theme = 'dropdown' },
-          help_tags             = { theme = 'dropdown' },
-          keymaps               = { theme = 'dropdown' },
-          diagnostics           = { theme = 'dropdown' },
-          lsp_references        = { theme = 'dropdown' },
-          lsp_definitions       = { theme = 'dropdown' },
-          lsp_type_definitions  = { theme = 'dropdown' },
+          find_files           = { theme = 'dropdown' },
+          buffers              = { theme = 'dropdown' },
+          help_tags            = { theme = 'dropdown' },
+          keymaps              = { theme = 'dropdown' },
+          diagnostics          = { theme = 'dropdown' },
+          lsp_references       = { theme = 'dropdown' },
+          lsp_definitions      = { theme = 'dropdown' },
+          lsp_type_definitions = { theme = 'dropdown' },
         },
         extensions = {
           file_browser = {
@@ -57,7 +59,7 @@ return {
 
       local builtin = require('telescope.builtin')
       local function find_files()
-        builtin.find_files(({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }}))
+        builtin.find_files(({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } }))
       end
 
       local opts = { noremap = true }
@@ -74,4 +76,3 @@ return {
     end,
   },
 }
-
