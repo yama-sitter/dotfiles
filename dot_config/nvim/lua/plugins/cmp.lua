@@ -18,7 +18,7 @@ return {
       local cmp = require('cmp')
 
       cmp.setup {
-         completion = {
+        completion = {
           completeopt = 'menu, menuone, noinsert',
         },
         mapping = cmp.mapping.preset.insert({
@@ -67,4 +67,3 @@ return {
     end,
   },
 }
-
