@@ -37,7 +37,12 @@ return {
           live_grep            = {
             theme = 'dropdown',
             additional_args = function()
-              return { '--hidden' }
+              return {
+                '--hidden',
+                '--no-ignore',
+                '-g',
+                '!package-lock.json',
+              }
             end,
           },
           find_files           = { theme = 'dropdown' },
