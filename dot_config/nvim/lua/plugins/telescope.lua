@@ -42,6 +42,8 @@ return {
                 '--no-ignore',
                 '-g',
                 '!package-lock.json',
+                '-g',
+                '!.git/*',
               }
             end,
           },
