@@ -3,6 +3,6 @@ vim.filetype.add({
   pattern = {
     ['.*zshrc.tmpl'] = 'zsh',
     ['.*gitconfig.tmpl'] = 'gitconfig',
+    ['*.ejs'] = 'html',
   },
 })
-
