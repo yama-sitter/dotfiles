@@ -39,7 +39,8 @@ return {
       mason_lspconfig.setup {
         ensure_installed = {
           'lua_ls',
-          'html_lsp',
+          'html',
+          'cssls',
           'tsserver',
         },
         automatic_installation = true,
@@ -59,6 +60,7 @@ return {
         init_options = { documentFormatting = true },
         filetypes = {
           'html',
+          'css',
           'typescript',
           'typescriptreact',
           'javascript',
