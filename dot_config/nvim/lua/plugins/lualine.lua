@@ -4,7 +4,7 @@ return {
     event = 'VeryLazy',
     dependencies = {
       'catppuccin/nvim',
-       'nvim-tree/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
     },
     opts = {
       options = {
@@ -14,8 +14,8 @@ return {
         lualine_a = { 'buffers' },
         lualine_b = {},
         lualine_c = {},
-        lualine_x = { 'diff' },
-        lualine_y = { 'branch' },
+        lualine_x = {},
+        lualine_y = {},
         lualine_z = {},
       },
       sections = {
@@ -68,4 +68,3 @@ return {
     },
   },
 }
-
