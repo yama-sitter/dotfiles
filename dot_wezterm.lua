@@ -108,13 +108,12 @@ config.keys = {
 -- 3. Press Esc to exit resize mode
 config.key_tables = {
   resize_pane = {
-    { key = 'h', action = wezterm.action.AdjustPaneSize {"Left", 1} },
-    { key = 'j', action = wezterm.action.AdjustPaneSize {"Down", 1} },
-    { key = 'k', action = wezterm.action.AdjustPaneSize {"Up", 1} },
-    { key = 'l', action = wezterm.action.AdjustPaneSize {"Right", 1} },
+    { key = 'h',      action = wezterm.action.AdjustPaneSize { "Left", 1 } },
+    { key = 'j',      action = wezterm.action.AdjustPaneSize { "Down", 1 } },
+    { key = 'k',      action = wezterm.action.AdjustPaneSize { "Up", 1 } },
+    { key = 'l',      action = wezterm.action.AdjustPaneSize { "Right", 1 } },
     { key = 'Escape', action = 'PopKeyTable' },
   },
 }
 
 return config
-
