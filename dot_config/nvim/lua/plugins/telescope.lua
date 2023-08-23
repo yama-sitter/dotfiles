@@ -46,6 +46,7 @@ return {
             end,
           },
           find_files                = { theme = 'dropdown' },
+          buffers                   = { theme = 'dropdown' },
           current_buffer_fuzzy_find = { theme = 'dropdown' },
           help_tags                 = { theme = 'dropdown' },
           keymaps                   = { theme = 'dropdown' },
@@ -64,12 +65,13 @@ return {
 
       local builtin = require('telescope.builtin')
       local function find_files()
-        builtin.find_files(({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } }))
+        builtin.find_files({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } })
       end
 
       local opts = { noremap = true }
       vim.keymap.set('n', '<leader>o', find_files, opts)
-      vim.keymap.set('n', '<leader>b', builtin.current_buffer_fuzzy_find, opts)
+      vim.keymap.set('n', '<leader>u', builtin.buffers, opts)
+      vim.keymap.set('n', '<leader>e', builtin.current_buffer_fuzzy_find, opts)
       vim.keymap.set('n', '<leader>g', builtin.live_grep, opts)
       vim.keymap.set('n', '<leader>h', builtin.help_tags, opts)
       vim.keymap.set('n', '<leader>k', builtin.keymaps, opts)
