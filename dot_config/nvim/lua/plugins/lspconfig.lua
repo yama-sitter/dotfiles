@@ -39,6 +39,7 @@ return {
       mason_lspconfig.setup {
         ensure_installed = {
           'lua_ls',
+          'html_lsp',
           'tsserver',
         },
         automatic_installation = true,
@@ -57,6 +58,7 @@ return {
       require('lspconfig').efm.setup {
         init_options = { documentFormatting = true },
         filetypes = {
+          'html',
           'typescript',
           'typescriptreact',
           'javascript',
