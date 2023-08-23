@@ -34,7 +34,7 @@ return {
           },
         },
         pickers = {
-          live_grep            = {
+          live_grep                 = {
             theme = 'dropdown',
             additional_args = function()
               return {
@@ -47,14 +47,14 @@ return {
               }
             end,
           },
-          find_files           = { theme = 'dropdown' },
-          buffers              = { theme = 'dropdown' },
-          help_tags            = { theme = 'dropdown' },
-          keymaps              = { theme = 'dropdown' },
-          diagnostics          = { theme = 'dropdown' },
-          lsp_references       = { theme = 'dropdown' },
-          lsp_definitions      = { theme = 'dropdown' },
-          lsp_type_definitions = { theme = 'dropdown' },
+          find_files                = { theme = 'dropdown' },
+          current_buffer_fuzzy_find = { theme = 'dropdown' },
+          help_tags                 = { theme = 'dropdown' },
+          keymaps                   = { theme = 'dropdown' },
+          diagnostics               = { theme = 'dropdown' },
+          lsp_references            = { theme = 'dropdown' },
+          lsp_definitions           = { theme = 'dropdown' },
+          lsp_type_definitions      = { theme = 'dropdown' },
         },
         extensions = {
           file_browser = {
@@ -71,7 +71,7 @@ return {
 
       local opts = { noremap = true }
       vim.keymap.set('n', '<leader>o', find_files, opts)
-      vim.keymap.set('n', '<leader>b', builtin.buffers, opts)
+      vim.keymap.set('n', '<leader>b', builtin.current_buffer_fuzzy_find, opts)
       vim.keymap.set('n', '<leader>g', builtin.live_grep, opts)
       vim.keymap.set('n', '<leader>h', builtin.help_tags, opts)
       vim.keymap.set('n', '<leader>k', builtin.keymaps, opts)
