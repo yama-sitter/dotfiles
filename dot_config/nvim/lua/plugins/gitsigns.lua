@@ -8,7 +8,7 @@ return {
         delete       = { numhl = 'GitSignsDeleteNr' },
         topdelete    = { numhl = 'GitSignsDeleteNr' },
         changedelete = { numhl = 'GitSignsChangeNr' },
-        untracked    = { numhl = 'GitSignsAddNr'    },
+        untracked    = { numhl = 'GitSignsAddNr' },
       },
       signcolumn = false,
       numhl = true,
@@ -45,4 +45,3 @@ return {
     },
   },
 }
-

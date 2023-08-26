@@ -29,7 +29,6 @@ config.font_size = 14
 config.font = wezterm.font_with_fallback({
   { family = "Hack Nerd Font" },
   { family = "0xProto" },
-  { family = "Osaka" },
 })
 
 ---------
@@ -39,7 +38,7 @@ config.font = wezterm.font_with_fallback({
 local mux = wezterm.mux
 
 wezterm.on("gui-startup", function(cmd)
-  local tab, pane, window = mux.spawn_window(cmd or {})
+  local pane, window = mux.spawn_window(cmd or {})
 
   -- Starts full screen from the begining
   window:gui_window():toggle_fullscreen()
