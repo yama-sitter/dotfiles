@@ -4,6 +4,7 @@ return {
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
     },
+    enabled = false,
     config = function()
       require('lspsaga').setup {}
 
