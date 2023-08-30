@@ -80,6 +80,28 @@ return {
       vim.keymap.set('n', '<leader>n', builtin.lsp_definitions, opts)
       vim.keymap.set('n', '<leader>t', builtin.lsp_type_definitions, opts)
       vim.keymap.set('n', '<leader>f', ':Telescope file_browser<CR>', opts)
+
+      function vim.getVisualSelection()
+        vim.cmd('noau normal! "vy"')
+        local text = vim.fn.getreg('v')
+        vim.fn.setreg('v', {})
+
+        text = string.gsub(text, "\n", "")
+        if #text > 0 then
+          return text
+        else
+          return ''
+        end
+      end
+
+      vim.keymap.set('v', '<leader>e', function()
+        local text = vim.getVisualSelection()
+        builtin.current_buffer_fuzzy_find({ default_text = text })
+      end, opts)
+      vim.keymap.set('v', '<leader>g', function()
+        local text = vim.getVisualSelection()
+        builtin.live_grep({ default_text = text })
+      end, opts)
     end,
   },
 }
