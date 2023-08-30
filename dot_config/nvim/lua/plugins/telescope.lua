@@ -1,6 +1,7 @@
 return {
   {
     'nvim-telescope/telescope-file-browser.nvim',
+    enabled = false,
     event = 'VeryLazy',
     dependencies = {
       'nvim-telescope/telescope.nvim',
@@ -15,14 +16,14 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      require('telescope').load_extension('file_browser')
+      -- require('telescope').load_extension('file_browser')
 
       require('telescope').setup {
         defaults = {
           file_ignore_patterns = { 'node_modules' },
           mappings = {
             i = {
-              ['<esc>'] = 'close',
+              ['<C-w>'] = 'close',
               ['<C-j>'] = 'move_selection_next',
               ['<C-k>'] = 'move_selection_previous',
             },
@@ -56,10 +57,10 @@ return {
           lsp_type_definitions      = { theme = 'dropdown' },
         },
         extensions = {
-          file_browser = {
+          --[[ file_browser = {
             theme = 'dropdown',
             hijack_netrw = true,
-          },
+          }, ]]
         },
       }
 
@@ -79,7 +80,7 @@ return {
       vim.keymap.set('n', '<leader>r', builtin.lsp_references, opts)
       vim.keymap.set('n', '<leader>n', builtin.lsp_definitions, opts)
       vim.keymap.set('n', '<leader>t', builtin.lsp_type_definitions, opts)
-      vim.keymap.set('n', '<leader>f', ':Telescope file_browser<CR>', opts)
+      -- vim.keymap.set('n', '<leader>f', ':Telescope file_browser<CR>', opts)
 
       function vim.getVisualSelection()
         vim.cmd('noau normal! "vy"')
