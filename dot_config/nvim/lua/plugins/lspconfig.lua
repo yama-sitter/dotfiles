@@ -8,6 +8,7 @@ local settings = {
   },
 }
 
+-- For Front-end setting
 local eslint = {
   lintCommand = './node_modules/.bin/eslint --stdin --stdin-filename ${INPUT}',
   lintIgnoreExitCode = true,
@@ -16,6 +17,22 @@ local eslint = {
     '%f(%l,%c): %tarning %m',
     '%f(%l,%c): %rror %m',
   },
+}
+local stylelint = {
+  lintCommand = './node_modules/.bin/stylelint --stdin-filepath ${INPUT}',
+  lintIgnoreExitCode = true,
+  lintStdin = true,
+  lintFormats = {
+    '%f:%l:%c: %m [%t%*[a-z]]',
+  }
+}
+local markuplint = {
+  lintCommand = './node_modules/.bin/markuplint --problem-only --allow-warnings ${INPUT}',
+  lintIgnoreExitCode = true,
+  lintStdin = true,
+  lintFormats = {
+    '%f:%l:%c: %m [%t%*[a-z]]',
+  }
 }
 local prettier = {
   formatCommand = './node_modules/.bin/prettier --stdin-filepath ${INPUT}',
@@ -69,10 +86,10 @@ return {
         settings = {
           rootMarkers = { '.git/' },
           languages = {
-            javascript = { eslint, prettier },
-            javascriptreact = { eslint, prettier },
-            typescript = { eslint, prettier },
-            typescriptreact = { eslint, prettier },
+            javascript = { eslint, prettier, stylelint },
+            javascriptreact = { eslint, prettier, markuplint },
+            typescript = { eslint, prettier, stylelint },
+            typescriptreact = { eslint, prettier, markuplint },
           },
         },
         on_attach = function(client, bufnr)
