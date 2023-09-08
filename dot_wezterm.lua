@@ -10,7 +10,7 @@ end
 -------------
 
 config.color_scheme = 'catppuccin-mocha'
-config.window_background_opacity = 0.85
+config.window_background_opacity = 0.95
 
 -- Change saturation and lightness of inactive panes
 config.inactive_pane_hsb = {
