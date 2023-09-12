@@ -68,7 +68,7 @@ return {
     vim.keymap.set('n', '<leader>g', builtin.live_grep, opts)
     vim.keymap.set('n', '<leader>h', builtin.help_tags, opts)
     vim.keymap.set('n', '<leader>k', builtin.keymaps, opts)
-    vim.keymap.set('n', '<leader>d', builtin.diagnostics, opts)
+    vim.keymap.set('n', '<leader>ad', builtin.diagnostics, opts)
     vim.keymap.set('n', '<leader>r', builtin.lsp_references, opts)
     vim.keymap.set('n', '<leader>n', builtin.lsp_definitions, opts)
     vim.keymap.set('n', '<leader>t', builtin.lsp_type_definitions, opts)
