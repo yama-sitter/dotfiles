@@ -16,6 +16,7 @@ return {
         mappings = {
           i = {
             ['<C-w>'] = 'close',
+            ['<C-q>'] = 'close',
             ['<C-j>'] = 'move_selection_next',
             ['<C-k>'] = 'move_selection_previous',
           },
@@ -72,7 +73,7 @@ return {
     vim.keymap.set('n', '<leader>r', builtin.lsp_references, opts)
     vim.keymap.set('n', '<leader>n', builtin.lsp_definitions, opts)
     vim.keymap.set('n', '<leader>t', builtin.lsp_type_definitions, opts)
-    vim.keymap.set('n', '<leader>f', ':Telescope file_browser<CR>', opts)
+    vim.keymap.set('n', '<leader>ff', ':Telescope file_browser<CR>', opts)
 
     function vim.getVisualSelection()
       vim.cmd('noau normal! "vy"')

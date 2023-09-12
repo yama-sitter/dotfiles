@@ -1,7 +1,6 @@
 return {
   'stevearc/oil.nvim',
   event = 'VeryLazy',
-  enabled = false,
   dependencies = {
     'nvim-tree/nvim-web-devicons'
   },
@@ -28,7 +27,7 @@ return {
     }
 
     local options = { noremap = true }
-    vim.keymap.set('n', '<leader>f', function()
+    vim.keymap.set('n', '<leader>ft', function()
       oil.open()
     end, options)
   end,
