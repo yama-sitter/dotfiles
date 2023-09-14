@@ -68,3 +68,6 @@ bind diff     B       !git rebase -i %(commit)
 
 # Press "Shift + d" on the status screen to delete the file
 bind status   D       !@?rm %(file)
+
+# Press "Shift + d" on the status screen to delete the file
+bind status   _       !@?git checkout %(file)
