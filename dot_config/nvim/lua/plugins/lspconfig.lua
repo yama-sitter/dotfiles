@@ -10,7 +10,7 @@ local settings = {
 
 -- For Front-end setting
 local eslint = {
-  lintCommand = './node_modules/.bin/eslint --stdin --stdin-filename ${INPUT}',
+  lintCommand = 'eslint --stdin --stdin-filename ${INPUT}',
   lintIgnoreExitCode = true,
   lintStdin = true,
   lintFormats = {
@@ -19,7 +19,7 @@ local eslint = {
   },
 }
 local stylelint = {
-  lintCommand = './node_modules/.bin/stylelint --stdin-filepath ${INPUT}',
+  lintCommand = 'stylelint --stdin-filepath ${INPUT}',
   lintIgnoreExitCode = true,
   lintStdin = true,
   lintFormats = {
@@ -27,7 +27,7 @@ local stylelint = {
   }
 }
 local markuplint = {
-  lintCommand = './node_modules/.bin/markuplint --problem-only --allow-warnings ${INPUT}',
+  lintCommand = 'markuplint --problem-only --allow-warnings ${INPUT}',
   lintIgnoreExitCode = true,
   lintStdin = true,
   lintFormats = {
@@ -35,7 +35,7 @@ local markuplint = {
   }
 }
 local prettier = {
-  formatCommand = './node_modules/.bin/prettier --stdin-filepath ${INPUT}',
+  formatCommand = 'prettier --stdin-filepath ${INPUT}',
   formatStdin = true,
 }
 
