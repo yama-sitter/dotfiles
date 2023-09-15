@@ -19,7 +19,7 @@ local eslint = {
   },
 }
 local stylelint = {
-  lintCommand = 'stylelint --stdin-filepath ${INPUT}',
+  lintCommand = './node_modules/.bin/stylelint --stdin-filepath ${INPUT}',
   lintIgnoreExitCode = true,
   lintStdin = true,
   lintFormats = {
@@ -27,7 +27,7 @@ local stylelint = {
   }
 }
 local markuplint = {
-  lintCommand = 'markuplint --problem-only --allow-warnings ${INPUT}',
+  lintCommand = './node_modules/.bin/markuplint --problem-only --allow-warnings ${INPUT}',
   lintIgnoreExitCode = true,
   lintStdin = true,
   lintFormats = {
@@ -35,7 +35,7 @@ local markuplint = {
   }
 }
 local prettier = {
-  formatCommand = 'prettier --stdin-filepath ${INPUT}',
+  formatCommand = './node_modules/.bin/prettier --stdin-filepath ${INPUT}',
   formatStdin = true,
 }
 
