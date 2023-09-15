@@ -93,7 +93,7 @@ return {
           },
         },
         on_attach = function(client, bufnr)
-          vim.keymap.set('n', '<leader>p', '<cmd>lua vim.lsp.buf.format()<CR>', { buffer = bufnr })
+          vim.keymap.set('n', '<leader>fm', '<cmd>lua vim.lsp.buf.format()<CR>', { buffer = bufnr })
 
           -- Format on save
           if (client.server_capabilities.documentFormattingProvider) then

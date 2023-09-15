@@ -12,6 +12,7 @@ return {
 
     require('telescope').setup {
       defaults = {
+        path_display = { 'smart' },
         file_ignore_patterns = { 'node_modules' },
         mappings = {
           i = {
@@ -21,7 +22,8 @@ return {
             ['<C-k>'] = 'move_selection_previous',
           },
           n = {
-            ['q'] = 'close',
+            ['<C-w>'] = 'close',
+            ['<C-q>'] = 'close',
           },
         },
       },
@@ -45,9 +47,9 @@ return {
         help_tags                 = { theme = 'dropdown' },
         keymaps                   = { theme = 'dropdown' },
         diagnostics               = { theme = 'dropdown' },
-        lsp_references            = { theme = 'dropdown' },
-        lsp_definitions           = { theme = 'dropdown' },
-        lsp_type_definitions      = { theme = 'dropdown' },
+        lsp_references            = { theme = 'ivy', show_line = false },
+        lsp_definitions           = { theme = 'ivy', show_line = false },
+        lsp_type_definitions      = { theme = 'ivi', show_line = false },
       },
       extensions = {
         file_browser = {
@@ -63,17 +65,16 @@ return {
     end
 
     local opts = { noremap = true }
-    vim.keymap.set('n', '<leader>o', find_files, opts)
-    vim.keymap.set('n', '<leader>u', builtin.buffers, opts)
-    vim.keymap.set('n', '<leader>e', builtin.current_buffer_fuzzy_find, opts)
-    vim.keymap.set('n', '<leader>g', builtin.live_grep, opts)
-    vim.keymap.set('n', '<leader>h', builtin.help_tags, opts)
-    vim.keymap.set('n', '<leader>k', builtin.keymaps, opts)
-    vim.keymap.set('n', '<leader>ad', builtin.diagnostics, opts)
-    vim.keymap.set('n', '<leader>r', builtin.lsp_references, opts)
-    vim.keymap.set('n', '<leader>n', builtin.lsp_definitions, opts)
-    vim.keymap.set('n', '<leader>t', builtin.lsp_type_definitions, opts)
-    vim.keymap.set('n', '<leader>ff', ':Telescope file_browser<CR>', opts)
+    vim.keymap.set('n', '<leader>oo', find_files, opts)
+    vim.keymap.set('n', '<leader>uu', builtin.buffers, opts)
+    vim.keymap.set('n', '<leader>ff', builtin.current_buffer_fuzzy_find, opts)
+    vim.keymap.set('n', '<leader>gg', builtin.live_grep, opts)
+    vim.keymap.set('n', '<leader>hh', builtin.help_tags, opts)
+    vim.keymap.set('n', '<leader>kk', builtin.keymaps, opts)
+    vim.keymap.set('n', '<leader>ll', builtin.diagnostics, opts)
+    vim.keymap.set('n', '<leader>rr', builtin.lsp_references, opts)
+    vim.keymap.set('n', '<leader>dd', builtin.lsp_definitions, opts)
+    vim.keymap.set('n', '<leader>bb', ':Telescope file_browser<CR>', opts)
 
     function vim.getVisualSelection()
       vim.cmd('noau normal! "vy"')
@@ -88,11 +89,11 @@ return {
       end
     end
 
-    vim.keymap.set('v', '<leader>e', function()
+    vim.keymap.set('v', '<leader>ff', function()
       local text = vim.getVisualSelection()
       builtin.current_buffer_fuzzy_find({ default_text = text })
     end, opts)
-    vim.keymap.set('v', '<leader>g', function()
+    vim.keymap.set('v', '<leader>gg', function()
       local text = vim.getVisualSelection()
       builtin.live_grep({ default_text = text })
     end, opts)

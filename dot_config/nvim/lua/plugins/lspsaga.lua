@@ -6,11 +6,7 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      require('lspsaga').setup {
-        code_action = {
-          -- extend_gitsigns = true,
-        }
-      }
+      require('lspsaga').setup {}
 
       -- vim.api.nvim_create_augroup('ShowLineDiagnostics', {})
       -- vim.api.nvim_create_autocmd({ 'CursorHold' }, {
@@ -20,19 +16,12 @@ return {
       --   end,
       -- })
 
-      local function show_documentation()
-        local ft = vim.opt.filetype._value
-        if ft == 'vim' or ft == 'help' then
-          vim.cmd([[execute 'h ' . expand('<cword>') ]])
-        else
-          require('lspsaga.hover').render_hover_doc()
-        end
-      end
-
       local opts = { noremap = true, silent = true }
-      vim.keymap.set('n', '<leader>c', show_documentation, opts)
-      vim.keymap.set('n', '<leader>d', ':Lspsaga show_line_diagnostics<CR>', opts)
+      vim.keymap.set('n', 'K', ':Lspsaga hover_doc<CR>', opts)
+      vim.keymap.set('n', 'J', ':Lspsaga show_line_diagnostics<CR>', opts)
       vim.keymap.set('n', '<leader>ca', ':Lspsaga code_action<CR>', opts)
+      vim.keymap.set('n', '<C-k>', ':Lspsaga diagnostic_jump_prev<CR>', opts)
+      vim.keymap.set('n', '<C-j>', ':Lspsaga diagnostic_jump_next<CR>', opts)
     end,
   },
 }

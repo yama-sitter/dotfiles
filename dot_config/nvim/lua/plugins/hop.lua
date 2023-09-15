@@ -6,7 +6,7 @@ return {
       require 'hop'.setup {}
 
       local options = { noremap = true }
-      vim.keymap.set('', '<leader>w', ':HopWord<CR>', options)
+      vim.keymap.set('', '<leader>jj', ':HopWord<CR>', options)
     end,
   },
 }
