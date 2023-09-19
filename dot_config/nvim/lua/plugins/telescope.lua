@@ -49,7 +49,7 @@ return {
         diagnostics               = { theme = 'dropdown' },
         lsp_references            = { theme = 'ivy', show_line = false },
         lsp_definitions           = { theme = 'ivy', show_line = false },
-        lsp_type_definitions      = { theme = 'ivi', show_line = false },
+        lsp_type_definitions      = { theme = 'ivy', show_line = false },
       },
       extensions = {
         file_browser = {
