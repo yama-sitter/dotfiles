@@ -27,7 +27,7 @@ return {
     }
 
     local options = { noremap = true }
-    vim.keymap.set('n', '<leader>bf', function()
+    vim.keymap.set('n', '<leader>fo', function()
       oil.open()
     end, options)
   end,
