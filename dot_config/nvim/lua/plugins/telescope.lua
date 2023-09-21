@@ -38,6 +38,8 @@ return {
               '!package-lock.json',
               '-g',
               '!.git/*',
+              '-g',
+              '!.next/*',
             }
           end,
         },
@@ -46,7 +48,7 @@ return {
         current_buffer_fuzzy_find = { theme = 'dropdown' },
         help_tags                 = { theme = 'dropdown' },
         keymaps                   = { theme = 'dropdown' },
-        diagnostics               = { theme = 'dropdown' },
+        diagnostics               = { theme = 'ivy', line_width = 'full' },
         lsp_references            = { theme = 'ivy', show_line = false },
         lsp_definitions           = { theme = 'ivy', show_line = false },
         lsp_type_definitions      = { theme = 'ivy', show_line = false },
