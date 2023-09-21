@@ -13,4 +13,4 @@ map('n', '<C-h>', ':bp<CR>', options)
 map('n', '<C-q>', ':bd<CR>', options)
 
 -- Copy name of current file to clipboard
-map('n', '<leader>cp', ':let @* = expand("%:t")<CR>', options)
+map('n', '<leader>cp', ':let @* = expand("%:p")<CR>', options)
