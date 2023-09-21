@@ -43,7 +43,10 @@ bind generic  G       move-last-line
 bind main     G       move-last-line
 bind main     <Esc>g  :toggle commit-title-graph
 
-# Enable stash on ths status screen
+# Enable revert on main screen
+bind main ! ?git revert %(commit)
+
+# Enable stash on status screen
 bind status   S       ?git stash save "%(prompt Enter stash comment: )"
 
 # Enable commit with "--amend" on the status screen
