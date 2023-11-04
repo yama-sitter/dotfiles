@@ -110,8 +110,7 @@ function z-cd() {
     return 1
   fi
 }
-zle -N z-cd
-bindkey '^z' z-cd
+alias zcd='z-cd'
 
 function fzf-cd() {
   d=$( \
@@ -191,7 +190,6 @@ zle -N fzf-git-checkout
 bindkey '^x' fzf-git-checkout
 
 function fzf-edit-vim() {
-  local file
   file="$(
     rg --files --hidden --follow --glob "!**/.git/*" | fzf \
       --preview 'bat  --color=always --style=header,grid {}' --preview-window=right:60%
@@ -208,3 +206,26 @@ function fzf-edit-vim() {
 zle -N fzf-edit-vim
 bindkey '^v' fzf-edit-vim
 
+function fzf-grep-vim() {
+  rg_cmd="rg --smart-case --line-number --color=always --trim" 
+  selected=$(FZF_DEFAULT_COMMAND=":" \
+    fzf --bind="change:top+reload($rg_cmd {q} || true)" \
+    --bind="ctrl-l:execute(tmux splitw -h -- nvim +/{q} {1} +{2})" \
+    --ansi --phony \
+    --delimiter=":" \
+    --preview="bat -H {2} --color=always --style=header,grid {1}" \
+    --preview-window='down:+{2}-10')
+
+  if [[ -n "$selected" ]]; then
+    file=${${(@s/:/)selected}[1]}
+    line=${${(@s/:/)selected}[2]}
+    vi $file +$line
+    print -s "vi $file +$line" # Append to command history
+    zle accept-line
+  else
+    zle reset-prompt
+    return 1
+  fi
+}
+zle -N fzf-grep-vim
+bindkey '^z' fzf-grep-vim
