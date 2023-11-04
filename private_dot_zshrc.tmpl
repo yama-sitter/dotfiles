@@ -110,7 +110,7 @@ function z-cd() {
     return 1
   fi
 }
-alias zcd='z-cd'
+bindkey "^z" z-cd
 
 function fzf-cd() {
   d=$( \
@@ -129,7 +129,7 @@ function fzf-cd() {
   zle accept-line
 }
 zle -N fzf-cd
-bindkey "^o" fzf-cd
+alias fcd='fzf-cd'
 
 function root-cd() {
   export TMP_CDR_DIR=$(pwd)
@@ -171,7 +171,7 @@ function fzf-ghq-cd() {
   fi
 }
 zle -N fzf-ghq-cd
-bindkey '^g' fzf-ghq-cd
+bindkey '^v' fzf-ghq-cd
 
 function fzf-git-checkout() {
   local branches branch
@@ -204,7 +204,7 @@ function fzf-edit-vim() {
   fi
 }
 zle -N fzf-edit-vim
-bindkey '^v' fzf-edit-vim
+bindkey '^o' fzf-edit-vim
 
 function fzf-grep-vim() {
   rg_cmd="rg --smart-case --line-number --color=always --trim" 
@@ -228,4 +228,4 @@ function fzf-grep-vim() {
   fi
 }
 zle -N fzf-grep-vim
-bindkey '^z' fzf-grep-vim
+bindkey '^g' fzf-grep-vim
