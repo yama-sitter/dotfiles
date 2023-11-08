@@ -40,6 +40,10 @@ return {
               '!.git/*',
               '-g',
               '!.next/*',
+              '-g',
+              '!storybook-static/*',
+              '-g',
+              '!coverage/*',
             }
           end,
         },
