@@ -38,7 +38,7 @@ config.font = wezterm.font_with_fallback({
 local mux = wezterm.mux
 
 wezterm.on("gui-startup", function(cmd)
-  local pane, window = mux.spawn_window(cmd or {})
+  local tab, pane, window = mux.spawn_window(cmd or {})
 
   -- Starts full screen from the begining
   window:gui_window():toggle_fullscreen()
@@ -77,7 +77,7 @@ config.keys = {
   {
     key = 'z',
     mods = 'SHIFT|CMD',
-    action = wezterm.action.TogglePaneZoomState,
+    action = act.TogglePaneZoomState,
   },
   {
     key = 'h',
