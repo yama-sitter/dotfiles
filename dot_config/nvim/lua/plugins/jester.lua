@@ -1,6 +1,6 @@
 return {
   'David-Kunz/jester',
-  event = 'VeryLazy',
+  ft = { 'javascript', 'typescript' },
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
   },
