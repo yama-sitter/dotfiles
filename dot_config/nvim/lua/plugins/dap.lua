@@ -67,7 +67,7 @@ return {
       }
     })
 
-    local opts = { notemap = true, silent = true }
+    local opts = { noremap = true, silent = true }
     local keymap = vim.keymap.set
     keymap('n', '<leader>c', ':DapContinue<CR>', opts)
     keymap('n', '<leader>b', ':DapToggleBreakpoint<CR>', opts)
