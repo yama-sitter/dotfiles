@@ -13,6 +13,7 @@ return {
       'microsoft/vscode-chrome-debug',
       build = 'npm install --legacy-peer-deps && npm run build',
     },
+    'suketa/nvim-dap-ruby',
   },
   config = function()
     require('dap-vscode-js').setup {
@@ -43,28 +44,40 @@ return {
       }
     end
 
-    --[[ for _, language in ipairs({
-      'javascriptreact',
-      'typescriptreact',
-    }) do
-      dap.configurations[language] = {
+    require('dap-ruby').setup()
+
+    require('dapui').setup({
+      layouts = {
         {
-          name = 'Debug with Chrome',
-          type = 'pwa-chrome',
-          request = 'attach',
-          program = '${file}',
-          cwd = vim.fn.getcwd(),
-          sourceMaps = true,
-          protocol = 'inspector',
-          port = 9222,
-          webRoot = '${workspaceFolder}',
+          elements = {
+            { id = 'repl',        size = 0.15 },
+            { id = 'stacks',      size = 0.2 },
+            { id = 'watches',     size = 0.2 },
+            { id = 'scopes',      size = 0.35 },
+            { id = 'breakpoints', size = 0.1 }
+          },
+          size = 0.4,
+          position = 'left'
         },
+        {
+          elements = { 'console' },
+          size = 0.25,
+          position = 'bottom'
+        }
       }
-    end ]]
+    })
 
-    -- require('dapui').setup()
-
-    --[[ local opts = { noremap = true, silent = true }
-    vim.keymap.set('n', '<leader>b', ':lua require("dapui").toggle()<CR>', opts) ]]
+    local opts = { notemap = true, silent = true }
+    local keymap = vim.keymap.set
+    keymap('n', '<leader>c', ':DapContinue<CR>', opts)
+    keymap('n', '<leader>b', ':DapToggleBreakpoint<CR>', opts)
+    keymap('n', '<leader>v', ':DapStepOver<CR>', opts)
+    keymap('n', '<leader>i', ':DapStepInto<CR>', opts)
+    keymap('n', '<leader>o', ':DapStepOut<CR>', opts)
+    keymap('n', '<leader>r', ':DapToggleRepl<CR>', opts)
+    keymap('n', '<leader>d', ':lua require("dapui").toggle({ reset = true })<CR>', opts)
+    keymap('n', '<leader>wa', ':lua require("dapui").elements.watches.add()<CR>', opts)
+    keymap('n', '<leader>wr', ':lua require("dapui").elements.watches.remove()<CR>', opts)
+    keymap('n', '<leader>e', ':lua require("dapui").eval()<CR>', opts)
   end
 }
