@@ -69,6 +69,9 @@ bind status   P       ?git push -u %(remote) %(repo:head)
 bind main     B       !git rebase -i %(commit)
 bind diff     B       !git rebase -i %(commit)
 
+# Enable stash pop on stash screen
+bind stash    Y       ?git stash pop %(stash)
+
 # Press "Shift + d" on the status screen to delete the file
 bind status   D       !@?rm %(file)
 
