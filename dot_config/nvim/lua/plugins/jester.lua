@@ -1,6 +1,11 @@
 return {
   'David-Kunz/jester',
-  ft = { 'javascript', 'typescript' },
+  ft = {
+    'typescript',
+    'typescriptreact',
+    'javascript',
+    'javacriptreact',
+  },
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
   },
