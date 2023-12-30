@@ -7,6 +7,7 @@
   log = {{ .git_diff_highlight_path }}/diff-highlight | less
   show = {{ .git_diff_highlight_path }}/diff-highlight | less
   diff = {{ .git_diff_highlight_path }}/diff-highlight | less
+  difftool = true
 [fetch]
   prune = true
 [commit]
@@ -25,4 +26,9 @@
   cancel = reset --soft HEAD^
 	ac = !git add -A && aicommits -a
   rb = !git rebase -i $(git merge-base $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') HEAD)
-
+[diff]
+  tool = difftastic
+[difftool]
+  prompt = false
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
