@@ -9,6 +9,7 @@ return {
   },
   config = function()
     require('telescope').load_extension('file_browser')
+    local actions = require('telescope.actions')
 
     require('telescope').setup {
       defaults = {
@@ -18,18 +19,20 @@ return {
           i = {
             ['<C-w>'] = 'close',
             ['<C-q>'] = 'close',
+            ['<C-f>'] = actions.add_to_qflist + actions.open_qflist,
             ['<C-j>'] = 'move_selection_next',
             ['<C-k>'] = 'move_selection_previous',
           },
           n = {
             ['<C-w>'] = 'close',
             ['<C-q>'] = 'close',
+            ['<C-f>'] = actions.add_to_qflist + actions.open_qflist,
           },
         },
       },
       pickers = {
         live_grep                 = {
-          theme = 'dropdown',
+          theme = 'ivy',
           additional_args = function()
             return {
               '--hidden',
@@ -48,7 +51,6 @@ return {
           end,
         },
         find_files                = { theme = 'ivy' },
-        live_grep                 = { theme = 'ivy' },
         buffers                   = { theme = 'ivy' },
         current_buffer_fuzzy_find = { theme = 'ivy' },
         help_tags                 = { theme = 'ivy' },
