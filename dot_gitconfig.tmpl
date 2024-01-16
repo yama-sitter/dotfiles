@@ -3,6 +3,8 @@
 	email = {{ .email }}
 [core]
   editor = nvim -u ~/.config/nvim/init.lua
+[init]
+  defaultBranch = main
 [pager]
   log = {{ .git_diff_highlight_path }}/diff-highlight | less
   show = {{ .git_diff_highlight_path }}/diff-highlight | less
