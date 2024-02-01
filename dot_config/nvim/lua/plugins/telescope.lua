@@ -14,7 +14,7 @@ return {
     require('telescope').setup {
       defaults = {
         path_display = { 'smart' },
-        file_ignore_patterns = { 'node_modules' },
+        file_ignore_patterns = { 'package%-lock.json', 'node%_modules', 'yarn.lock', '.yarn', 'storybook%-static' },
         mappings = {
           i = {
             ['<C-w>'] = 'close',
@@ -31,25 +31,7 @@ return {
         },
       },
       pickers = {
-        live_grep                 = {
-          theme = 'ivy',
-          additional_args = function()
-            return {
-              '--hidden',
-              '--no-ignore',
-              '-g',
-              '!package-lock.json',
-              '-g',
-              '!.git/*',
-              '-g',
-              '!.next/*',
-              '-g',
-              '!storybook-static/*',
-              '-g',
-              '!coverage/*',
-            }
-          end,
-        },
+        live_grep                 = { theme = 'ivy' },
         find_files                = { theme = 'ivy' },
         buffers                   = { theme = 'ivy' },
         current_buffer_fuzzy_find = { theme = 'ivy' },
