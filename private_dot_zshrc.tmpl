@@ -76,7 +76,13 @@ source "$(brew --prefix)/etc/profile.d/z.sh"
 # -----------
 # Environment
 # -----------
+
+# direnv
 eval "$(direnv hook zsh)"
+
+# git
+# signed commits
+export GPG_TTY=$(tty)
 
 # ----------
 # Completion

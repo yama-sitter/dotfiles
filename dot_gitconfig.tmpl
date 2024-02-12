@@ -1,6 +1,7 @@
 [user]
 	name = yama-sitter
 	email = {{ .email }}
+	signingkey = {{ .gpg_key }} 
 [core]
   editor = nvim -u ~/.config/nvim/init.lua
 [init]
@@ -14,6 +15,7 @@
   prune = true
 [commit]
   verbose = true
+  gpgsign = true
 [ghq]
 	root = ~/Sources
 [alias]

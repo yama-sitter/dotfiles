@@ -52,6 +52,9 @@ bind status   S       ?git stash save "%(prompt Enter stash comment: )"
 # Enable commit with "--amend" on the status screen
 bind status   +       !git commit --amend
 
+# Enable signed commit on the status screen
+bind status   C       !git commit -S
+
 # Enable fetch on all screens
 bind generic  F       ?git fetch %(remote)
 bind generic  <Esc>f  :toggle file-name
