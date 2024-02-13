@@ -52,6 +52,9 @@ return {
 			require("mason-null-ls").setup({
 				ensure_installed = { "cspell", "stylua", "markuplint", "eslint-lsp", "prettier" },
 				automatic_installation = true,
+				methods = {
+					code_actions = false,
+				},
 			})
 
 			local null_ls = require("null-ls")
