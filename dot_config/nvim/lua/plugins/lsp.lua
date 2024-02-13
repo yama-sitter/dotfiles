@@ -50,7 +50,7 @@ return {
 			require("mason").setup()
 
 			require("mason-null-ls").setup({
-				ensure_installed = { "cspell", "stylua", "markuplint", "eslint-lsp", "prettier" },
+				ensure_installed = { "cspell", "stylua", "markuplint", "eslint_d", "prettierd" },
 				automatic_installation = true,
 				methods = {
 					code_actions = false,
@@ -87,13 +87,21 @@ return {
 							return vim.fn.executable("markuplint") > 0
 						end,
 					}),
-					null_ls.builtins.diagnostics.eslint.with({
+					null_ls.builtins.diagnostics.eslint_d.with({
 						prefer_local = "node_modules/.bin",
+						condition = function()
+							return vim.fn.executable("eslint_d") > 0
+						end,
 					}),
-					null_ls.builtins.formatting.prettier.with({
+					null_ls.builtins.formatting.prettierd.with({
 						prefer_local = "node_modules/.bin",
+						condition = function()
+							return vim.fn.executable("prettierd") > 0
+						end,
 					}),
 				},
+				-- Diagnostic sources are run when exiting insert mode
+				update_in_insert = false,
 				on_attach = function(client, bufnr)
 					-- Format on save
 					if client.supports_method("textDocument/formatting") then
