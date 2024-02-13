@@ -110,7 +110,7 @@ return {
 							group = augroup,
 							buffer = bufnr,
 							callback = function()
-								vim.lsp.buf.format({ async = false })
+								vim.lsp.buf.format({ async = true })
 							end,
 						})
 					end
@@ -120,7 +120,9 @@ return {
 						virtual_text = false,
 					})
 
-					vim.keymap.set("n", "<leader>fm", "<cmd>lua vim.lsp.buf.format()<CR>", { buffer = bufnr })
+					vim.keymap.set("n", "<leader>fm", function()
+						vim.lsp.buf.format({ async = true })
+					end)
 				end,
 			})
 		end,
