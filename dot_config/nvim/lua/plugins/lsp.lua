@@ -110,7 +110,7 @@ return {
 							group = augroup,
 							buffer = bufnr,
 							callback = function()
-								vim.lsp.buf.format({ async = true })
+								vim.lsp.buf.format({ async = false })
 							end,
 						})
 					end
@@ -121,7 +121,7 @@ return {
 					})
 
 					vim.keymap.set("n", "<leader>fm", function()
-						vim.lsp.buf.format({ async = true })
+						vim.lsp.buf.format({ async = false })
 					end)
 				end,
 			})
