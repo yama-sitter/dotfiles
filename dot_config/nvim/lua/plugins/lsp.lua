@@ -83,20 +83,42 @@ return {
 					null_ls.builtins.diagnostics.markuplint.with({
 						filetypes = { "html", "javascriptreact", "typescriptreact" },
 						prefer_local = "node_modules/.bin",
-						condition = function()
+						condition = function(utils)
 							return vim.fn.executable("markuplint") > 0
+								and utils.root_has_file({
+									".markuplintrc",
+									".markuplintrc.json",
+									".markuplintrc.yaml",
+									".markuplintrc.yml",
+									".markuplintrc.js",
+									".markuplintrc.ts",
+								})
 						end,
 					}),
 					null_ls.builtins.diagnostics.eslint_d.with({
 						prefer_local = "node_modules/.bin",
-						condition = function()
+						condition = function(utils)
 							return vim.fn.executable("eslint_d") > 0
+								and utils.root_has_file({
+									".eslintrc.js",
+									".eslintrc.json",
+									".eslintrc.yaml",
+									".eslintrc.yml",
+									".eslintrc",
+								})
 						end,
 					}),
 					null_ls.builtins.formatting.prettierd.with({
 						prefer_local = "node_modules/.bin",
-						condition = function()
+						condition = function(utils)
 							return vim.fn.executable("prettierd") > 0
+								and utils.root_has_file({
+									".prettierrc",
+									".prettierrc.json",
+									".prettierrc.yaml",
+									".prettierrc.yml",
+									".prettierrc.js",
+								})
 						end,
 					}),
 				},
