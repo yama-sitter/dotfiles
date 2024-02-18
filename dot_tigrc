@@ -13,7 +13,7 @@ set split-view-height = 80%
 set tab-size          = 2
 set wrap-lines        = yes
 set diff-highlight    = true
-set diff-options      = -m --first-parent
+set diff-options      = -m --first-parent --histogram
 
 # Specify the number of lines to display before and after the diff
 set diff-context      = 3
