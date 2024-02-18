@@ -19,6 +19,8 @@
 [rebase]
   # rebaseの前に未コミットの変更をstashし、pullが終わったらpopする
   autostash = true
+  # 親ブランチのコミットの修正を子ブランチにも反映する
+  updateRefs = true
 [commit]
   # コミット時に開かれるエディタで差分を全て表示する
   verbose = true
