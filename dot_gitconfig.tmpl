@@ -13,6 +13,12 @@
   difftool = true
 [fetch]
   prune = true
+[pull]
+  # pullの前に未コミットの変更をstashし、pullが終わったらpopする
+  autostash = true
+[rebase]
+  # rebaseの前に未コミットの変更をstashし、pullが終わったらpopする
+  autostash = true
 [commit]
   # コミット時に開かれるエディタで差分を全て表示する
   verbose = true
