@@ -16,6 +16,9 @@
 [pull]
   # pullの前に未コミットの変更をstashし、pullが終わったらpopする
   autostash = true
+[merge]
+  # コンフリクトが起きた際に、共通の親ブランチの当該箇所の内容を表示する
+  conflictstyle = zdiff3
 [rebase]
   # rebaseの前に未コミットの変更をstashし、pullが終わったらpopする
   autostash = true
