@@ -17,8 +17,17 @@
   # コミット時に開かれるエディタで差分を全て表示する
   verbose = true
   gpgsign = true
-[ghq]
-	root = ~/Sources
+[diff]
+  tool = difftastic
+  external = difft
+	algorithm = histogram
+[difftool]
+  prompt = false
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
+[url "git@github.com:"]
+  # HTTPSのURLをSSHのURLに置き換える
+	insteadOf = "https://github.com/"
 [alias]
   p = push
   st = status
@@ -31,14 +40,5 @@
   cancel = reset --soft HEAD^
 	ac = !git add -A && aicommits -a
   rb = !git rebase -i $(git merge-base $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') HEAD)
-[diff]
-  tool = difftastic
-  external = difft
-	algorithm = histogram
-[difftool]
-  prompt = false
-[difftool "difftastic"]
-  cmd = difft "$LOCAL" "$REMOTE"
-[url "git@github.com:"]
-  # HTTPSのURLをSSHのURLに置き換える
-	insteadOf = "https://github.com/"
+[ghq]
+	root = ~/Sources
