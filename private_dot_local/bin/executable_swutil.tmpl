@@ -1,0 +1,21 @@
+#!/bin/bash
+
+BLUEUTIL_PATH={{ .blueutil_path }}
+
+MAGIC_KEYBOARD_ID={{ .magic_keyboard_id }}
+MAGIC_TRACKPAD_ID={{ .magic_trackpad_id }}
+
+pair_or_unpair_device() {
+  local DEVICE_ID="$1"
+  local res=$($BLUEUTIL_PATH --is-connected $DEVICE_ID)
+  if [[ "$res" = '1' ]]; then
+    $BLUEUTIL_PATH --unpair $DEVICE_ID
+  else
+    $BLUEUTIL_PATH --pair $DEVICE_ID
+    sleep 1
+    $BLUEUTIL_PATH --connect $DEVICE_ID
+  fi
+}
+
+pair_or_unpair_device $MAGIC_KEYBOARD_ID
+pair_or_unpair_device $MAGIC_TRACKPAD_ID

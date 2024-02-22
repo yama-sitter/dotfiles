@@ -40,13 +40,16 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(sheldon source)"
 
 # --------
-# Terminal
+# Path
 # --------
 
 # WezTerm
 if [[ -d {{ .wezterm_path }} ]]; then
   export PATH="{{ .wezterm_path }}:$PATH"
 fi
+
+# local commands
+export PATH="$HOME/.local/bin:$PATH"
 
 # ----------
 # Extensions
