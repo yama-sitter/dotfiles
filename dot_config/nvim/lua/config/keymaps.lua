@@ -19,8 +19,8 @@ map("n", "<C-q>", vim.CloseBuffer, options)
 map("n", "<leader>cp", ':let @* = expand("%:p")<CR>', options)
 
 -- Grep word under cursor with vimgrep
-map("n", "<C-g>", ":vimgrep <cword> % | cw<CR>", { noremap = true })
+map("n", "<C-g>", ":vimgrep <cword> % | cw<CR>", options)
 map("v", "<C-g>", function()
 	local text = vim.GetVisualSelection()
 	vim.cmd(":vimgrep " .. text .. " % | cw")
-end, { noremap = true })
+end, options)
