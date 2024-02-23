@@ -15,7 +15,7 @@ return {
 				"n",
 				"<leader>tt",
 				":TodoTelescope keywords=TODO theme=ivy path_display={'smart'}<CR>",
-				{ noremap = true, desc = "Search for TODOs" }
+				{ noremap = true, silent = true, desc = "Search for TODOs" }
 			)
 		end,
 	},
@@ -29,15 +29,30 @@ return {
 			vim.g.bookmark_annotation_sign = "󱖯 "
 		end,
 		config = function()
-			vim.keymap.set("n", "mm", "<Plug>BookmarkToggle", { noremap = true, desc = "Toggle bookmark" })
-			vim.keymap.set("n", "mi", "<Plug>BookmarkAnnotate", { noremap = true, desc = "Bookmark with annotation" })
+			vim.keymap.set(
+				"n",
+				"mm",
+				"<Plug>BookmarkToggle",
+				{ noremap = true, silent = true, desc = "Toggle bookmark" }
+			)
+			vim.keymap.set(
+				"n",
+				"mi",
+				"<Plug>BookmarkAnnotate",
+				{ noremap = true, silent = true, desc = "Bookmark with annotation" }
+			)
 			vim.keymap.set(
 				"n",
 				"mc",
 				"<Plug>BookmarkClear",
-				{ noremap = true, desc = "Clear bookmarks in current buffer" }
+				{ noremap = true, silent = true, desc = "Clear bookmarks in current buffer" }
 			)
-			vim.keymap.set("n", "mx", "<Plug>BookmarkClearAll", { noremap = true, desc = "Clear all bookmarks" })
+			vim.keymap.set(
+				"n",
+				"mx",
+				"<Plug>BookmarkClearAll",
+				{ noremap = true, silent = true, desc = "Clear all bookmarks" }
+			)
 		end,
 	},
 	{
