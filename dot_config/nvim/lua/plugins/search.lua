@@ -40,4 +40,28 @@ return {
 			vim.keymap.set("n", "mx", "<Plug>BookmarkClearAll", { noremap = true, desc = "Clear all bookmarks" })
 		end,
 	},
+	{
+		-- Show bookmarks in telescope
+		"tom-anders/telescope-vim-bookmarks.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+		config = function()
+			require("telescope").load_extension("vim_bookmarks")
+
+			vim.keymap.set(
+				"n",
+				"<leader>mm",
+				":Telescope vim_bookmarks current_file theme=ivy<CR>",
+				{ noremap = true, silent = true, desc = "Show bookmarks in current file" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>aa",
+				":Telescope vim_bookmarks all theme=ivy<CR>",
+				{ noremap = true, silent = true, desc = "Show all bookmarks" }
+			)
+		end,
+	},
 }
