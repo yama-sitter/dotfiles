@@ -1,0 +1,13 @@
+(
+    selection_bg: Some(Rgb(88, 91, 112)),
+    selection_fg: Some(Rgb(205, 214, 244)),
+    command_fg: Some(Rgb(205, 214, 244)),
+    disabled_fg: Some(Rgb(88, 91, 112)),
+    cmdbar_bg: Some(Reset),
+    cmdbar_extra_lines_bg: Some(Reset),
+    danger_fg: Some(Rgb(243, 139, 168)),
+    push_gauge_bg: Some(Rgb(137, 180, 250)),
+    push_gauge_fg: Some(Rgb(30, 30, 46)),
+    tag_fg: Some(Rgb(245, 224, 220)),
+    branch_fg: Some(Rgb(148, 226, 213))
+)
