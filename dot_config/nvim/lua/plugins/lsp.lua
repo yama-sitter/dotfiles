@@ -14,7 +14,7 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"tsserver",
-					"ruby_ls",
+					"solargraph",
 				},
 				automatic_installation = true,
 			})
