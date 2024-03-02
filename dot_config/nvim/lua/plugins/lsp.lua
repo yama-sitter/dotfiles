@@ -71,8 +71,11 @@ return {
 						diagnostics_postprocess = function(diagnostic)
 							diagnostic.severity = vim.diagnostic.severity["WARN"]
 						end,
-						condition = function()
+						condition = function(utils)
 							return vim.fn.executable("cspell") > 0
+								and utils.root_has_file({
+									".vscode/cspell.json",
+								})
 						end,
 					}),
 					null_ls.builtins.formatting.stylua.with({
