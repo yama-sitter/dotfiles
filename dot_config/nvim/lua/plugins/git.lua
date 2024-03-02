@@ -46,12 +46,6 @@ return {
 					end)
 					return "<Ignore>"
 				end, { expr = true })
-
-				map("n", "<leader>gd", gs.diffthis)
-				map("n", "<leader>gl", gs.setqflist)
-				map("n", "<leader>gb", function()
-					gs.blame_line({ full = true })
-				end)
 			end,
 		},
 	},
