@@ -30,6 +30,8 @@ function vim.CloseBuffer()
 		vim.cmd("bd!")
 	elseif vim.bo.buftype == "help" then
 		vim.cmd("bd")
+	elseif #vim.api.nvim_list_wins() > 1 then
+		vim.cmd("close")
 	else
 		vim.CloseBufferSafely()
 	end
