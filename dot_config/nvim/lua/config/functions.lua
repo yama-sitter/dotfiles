@@ -27,6 +27,7 @@ function vim.CloseBuffer()
 	if vim.bo.buftype == "terminal" then
 		vim.cmd("bw!")
 	elseif vim.bo.buftype == "quickfix" then
+    vim.fn.setqflist({}, 'r')
 		vim.cmd("bd!")
 	elseif vim.bo.buftype == "help" then
 		vim.cmd("bd")
