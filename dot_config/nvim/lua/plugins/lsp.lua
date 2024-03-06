@@ -162,6 +162,7 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
 		},
+		event = { "VeryLazy" },
 		config = function()
 			require("lspsaga").setup({})
 
@@ -179,6 +180,18 @@ return {
 			vim.keymap.set("n", "<leader>ca", ":Lspsaga code_action<CR>", opts)
 			vim.keymap.set("n", "<C-k>", ":Lspsaga diagnostic_jump_prev<CR>", opts)
 			vim.keymap.set("n", "<C-j>", ":Lspsaga diagnostic_jump_next<CR>", opts)
+		end,
+	},
+	{
+		-- Show diagnostics of all files
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		event = { "VeryLazy" },
+		config = function()
+			local trouble = require("trouble")
+			vim.keymap.set("n", "<leader>xx", function()
+				trouble.toggle()
+			end, { noremap = true })
 		end,
 	},
 }
