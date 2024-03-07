@@ -11,29 +11,11 @@ function vim.GetVisualSelection()
 	end
 end
 
-function vim.CloseBufferSafely()
-	local current_buf = vim.api.nvim_get_current_buf()
-	vim.cmd("bnext")
-	if vim.api.nvim_get_current_buf() == current_buf then
-		vim.cmd("bprevious")
-	end
-
-	if vim.api.nvim_get_current_buf() ~= current_buf then
-		vim.api.nvim_buf_delete(current_buf, { force = true })
-	end
-end
-
 function vim.CloseBuffer()
-	if vim.bo.buftype == "terminal" then
-		vim.cmd("bw!")
-	elseif vim.bo.buftype == "quickfix" then
+	if vim.bo.buftype == "quickfix" then
     vim.fn.setqflist({}, 'r')
-		vim.cmd("bd!")
-	elseif vim.bo.buftype == "help" then
-		vim.cmd("bd")
-	elseif #vim.api.nvim_list_wins() > 1 then
-		vim.cmd("close")
-	else
-		vim.CloseBufferSafely()
-	end
+		vim.cmd("cclose")
+  else
+    vim.cmd("bw!")
+  end
 end
