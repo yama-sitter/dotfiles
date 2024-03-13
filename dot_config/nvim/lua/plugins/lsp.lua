@@ -12,6 +12,7 @@ return {
 			local mason_lspconfig = require("mason-lspconfig")
 			mason_lspconfig.setup({
 				ensure_installed = {
+					"bashls",
 					"lua_ls",
 					"tsserver",
 					"solargraph",
@@ -52,7 +53,7 @@ return {
 			require("mason").setup()
 
 			require("mason-null-ls").setup({
-				ensure_installed = { "cspell", "stylua", "markuplint", "eslint_d", "prettierd" },
+				ensure_installed = { "cspell", "shellcheck", "stylua", "markuplint", "eslint_d", "prettierd" },
 				automatic_installation = true,
 				methods = {
 					code_actions = false,
