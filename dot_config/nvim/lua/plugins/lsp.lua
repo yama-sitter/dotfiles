@@ -39,6 +39,11 @@ return {
 					})
 				end,
 			})
+
+			-- Disable inline diagnostics
+			vim.diagnostic.config({
+				virtual_text = false,
+			})
 		end,
 	},
 	{
@@ -143,11 +148,6 @@ return {
 					-- 		end,
 					-- 	})
 					-- end
-
-					-- Disable inline diagnostics
-					vim.diagnostic.config({
-						virtual_text = false,
-					})
 
 					vim.keymap.set("n", "<leader>fm", function()
 						vim.lsp.buf.format({ async = false })
