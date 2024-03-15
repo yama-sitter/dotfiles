@@ -15,6 +15,7 @@ return {
 					"bashls",
 					"lua_ls",
 					"tsserver",
+          "stylelint_lsp",
 					"solargraph",
 				},
 				automatic_installation = true,
