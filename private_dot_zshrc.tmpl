@@ -251,3 +251,11 @@ function fzf-grep-vim() {
 }
 zle -N fzf-grep-vim
 bindkey '^g' fzf-grep-vim
+
+function fzf-git-branch-delete() {
+  local branches branch
+  branches=$(git branch --merged) &&
+  branch=$(echo "$branches" | fzf --multi) &&
+    git branch -d $(echo "$branch" | sed "s/.* //") && fzf-git-branch-delete
+}
+alias fgbd='fzf-git-branch-delete'
