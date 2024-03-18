@@ -55,11 +55,15 @@ bind status   +       !git commit --amend
 # Enable signed commit on the status screen
 bind status   C       !git commit -S
 
+# Enable commit with fixup on main and status screens
+bind main     F       ?!git commit --fixup %(commit)
+bind status   F       ?!git commit --fixup %(commit)
+
 # Enable fetch on all screens
-bind generic  F       ?git fetch %(remote)
-bind generic  <Esc>f  :toggle file-name
-bind main     F ?git  fetch %(remote)
-bind main     <Esc>f  :toggle commit-title-refs
+# bind generic  F       ?git fetch %(remote)
+# bind generic  <Esc>f  :toggle file-name
+# bind main     F ?git  fetch %(remote)
+# bind main     <Esc>f  :toggle commit-title-refs
 
 # Enable pull on all screens
 bind generic  U       ?git pull %(remote)
