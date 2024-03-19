@@ -10,12 +10,3 @@ function vim.GetVisualSelection()
 		return ""
 	end
 end
-
-function vim.CloseBuffer()
-	if vim.bo.buftype == "quickfix" then
-    vim.fn.setqflist({}, 'r')
-		vim.cmd("cclose")
-  else
-    vim.cmd("bw!")
-  end
-end
