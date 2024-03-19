@@ -105,4 +105,11 @@ return {
 			vim.keymap.set("n", "<leader>js", ':lua require"jester".run()<CR>', opts)
 		end,
 	},
+	{
+		"dmmulroy/tsc.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("tsc").setup()
+		end,
+	},
 }
