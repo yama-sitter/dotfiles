@@ -13,3 +13,10 @@ vim.api.nvim_create_autocmd({ 'WinEnter' }, {
   command = [[ if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | quit | endif ]],
 })
 
+-- Do not display quickfix on buffer
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "qf",
+    callback = function()
+        vim.opt_local.buflisted = false
+    end,
+})
