@@ -5,7 +5,9 @@ return {
 		event = "VeryLazy",
 		config = function()
 			function CloseBuffer()
-				if vim.bo.buftype == "quickfix" then
+				if vim.bo.buftype == "terminal" then
+					vim.cmd("bd!")
+        elseif vim.bo.buftype == "quickfix" then
 					vim.fn.setqflist({}, "r")
 					vim.cmd("cclose")
 				else
