@@ -59,6 +59,9 @@ bind status   C       !git commit -S
 bind main     F       ?!git commit --fixup %(commit)
 bind status   F       ?!git commit --fixup %(commit)
 
+# Enable copy commit hash on main screen
+bind main     9       !@sh -c "git show -s --format=%h %(commit) | pbcopy"
+
 # Enable fetch on all screens
 # bind generic  F       ?git fetch %(remote)
 # bind generic  <Esc>f  :toggle file-name
