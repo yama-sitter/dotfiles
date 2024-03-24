@@ -10,6 +10,8 @@ return {
         elseif vim.bo.buftype == "quickfix" then
 					vim.fn.setqflist({}, "r")
 					vim.cmd("cclose")
+        elseif #vim.api.nvim_list_wins() > 1 then
+          vim.cmd("close")
 				else
 					vim.cmd("BufDel")
 				end
