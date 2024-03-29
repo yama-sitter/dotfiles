@@ -254,8 +254,8 @@ bindkey '^g' fzf-grep-vim
 
 function fzf-git-branch-delete() {
   local branches branch
-  branches=$(git branch --merged) &&
+  branches=$(git branch) &&
   branch=$(echo "$branches" | fzf --multi) &&
-    git branch -d $(echo "$branch" | sed "s/.* //") && fzf-git-branch-delete
+    git branch -D $(echo "$branch" | sed "s/.* //") && fzf-git-branch-delete
 }
 alias fgbd='fzf-git-branch-delete'
