@@ -15,7 +15,7 @@ return {
 					"bashls",
 					"lua_ls",
 					"tsserver",
-          "stylelint_lsp",
+					"stylelint_lsp",
 					"solargraph",
 				},
 				automatic_installation = true,
@@ -107,6 +107,7 @@ return {
 						end,
 					}),
 					null_ls.builtins.diagnostics.eslint_d.with({
+						command = "eslint",
 						prefer_local = "node_modules/.bin",
 						condition = function(utils)
 							return vim.fn.executable("eslint_d") > 0
