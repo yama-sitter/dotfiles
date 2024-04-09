@@ -54,6 +54,10 @@ export LIBRARY_PATH=$LIBRARY_PATH:$(brew --prefix zstd)/lib/
 # local commands
 export PATH="$HOME/.local/bin:$PATH"
 
+# Java 17
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
+
 # ----------
 # Extensions
 # ----------
