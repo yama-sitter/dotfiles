@@ -18,3 +18,7 @@ map("v", "<C-g>", function()
 	local text = vim.GetVisualSelection()
 	vim.cmd(":vimgrep " .. text .. " % | cw")
 end, options)
+
+-- Grep word under cursor and replace
+map("x", "<leader>rp", 'y:%s/<C-r><C-r>"//g<Left><Left>')
+map("n", "<leader>rp", 'yiw:%s/<C-r><C-r>"//g<Left><Left>')
