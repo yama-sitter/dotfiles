@@ -59,7 +59,7 @@ return {
 			require("mason").setup()
 
 			require("mason-null-ls").setup({
-				ensure_installed = { "cspell", "shellcheck", "stylua", "markuplint", "eslint_d", "prettierd" },
+				ensure_installed = { "cspell", "shellcheck", "stylua", "markuplint", "eslint_d", "prettierd", "biome" },
 				automatic_installation = true,
 				methods = {
 					code_actions = false,
@@ -118,6 +118,9 @@ return {
 									".eslintrc.yml",
 									".eslintrc",
 								})
+								and not utils.root_has_file({
+									"biome.json",
+								})
 						end,
 					}),
 					null_ls.builtins.formatting.prettierd.with({
@@ -130,6 +133,18 @@ return {
 									".prettierrc.yaml",
 									".prettierrc.yml",
 									".prettierrc.js",
+								})
+								and not utils.root_has_file({
+									"biome.json",
+								})
+						end,
+					}),
+					null_ls.builtins.formatting.biome.with({
+						prefer_local = "node_modules/.bin",
+						condition = function(utils)
+							return vim.fn.executable("biome") > 0
+								and utils.root_has_file({
+									"biome.json",
 								})
 						end,
 					}),
