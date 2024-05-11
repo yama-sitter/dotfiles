@@ -51,8 +51,10 @@ return {
 		-- Run tools like formatters and linters like LSP
 		"nvimtools/none-ls.nvim",
 		dependencies = {
+			"nvimtools/none-ls-extras.nvim",
 			"williamboman/mason.nvim",
 			"jay-babu/mason-null-ls.nvim",
+			"davidmh/cspell.nvim",
 		},
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
@@ -70,12 +72,10 @@ return {
 
 			null_ls.setup({
 				sources = {
-					null_ls.builtins.diagnostics.cspell.with({
-						config = {
-							find_json = function(cwd)
-								return vim.fn.expand(cwd .. "/.vscode/cspell.json")
-							end,
-						},
+					require("cspell").diagnostics.with({
+						find_json = function(cwd)
+							return vim.fn.expand(cwd .. "/.vscode/cspell.json")
+						end,
 						diagnostics_postprocess = function(diagnostic)
 							diagnostic.severity = vim.diagnostic.severity["WARN"]
 						end,
@@ -106,7 +106,7 @@ return {
 								})
 						end,
 					}),
-					null_ls.builtins.diagnostics.eslint_d.with({
+					require("none-ls.diagnostics.eslint_d").with({
 						command = "eslint",
 						prefer_local = "node_modules/.bin",
 						condition = function(utils)
