@@ -29,9 +29,31 @@ return {
 		},
 		config = function()
 			local options = { noremap = true, silent = true }
-			vim.keymap.set("n", "<leader>ts", ":TigStatus<CR>", options)
-			vim.keymap.set("n", "<leader>tb", ":TigBlame<CR>", options)
-			vim.keymap.set("n", "<leader>to", ":TigOpenCurrentFile<CR>", options)
+			vim.keymap.set("n", "<leader>gs", ":TigStatus<CR>", options)
+			vim.keymap.set("n", "<leader>gb", ":TigBlame<CR>", options)
+		end,
+	},
+	{
+		"sindrets/diffview.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("diffview").setup({})
+
+			local function toggle_diff_history()
+				local file_name = vim.fn.expand("%:p")
+				if string.match(file_name, "^diffview.+") then
+					vim.cmd("tabclose")
+				else
+					vim.cmd("DiffviewFileHistory %")
+				end
+			end
+
+			vim.keymap.set(
+				"n",
+				"<leader>gh",
+				toggle_diff_history,
+				{ noremap = true, silent = true, desc = "Show file history" }
+			)
 		end,
 	},
 }
