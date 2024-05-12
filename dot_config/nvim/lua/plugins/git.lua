@@ -27,11 +27,10 @@ return {
 		dependencies = {
 			"rbgrouleff/bclose.vim",
 		},
-		config = function()
-			local options = { noremap = true, silent = true }
-			vim.keymap.set("n", "<leader>gs", ":TigStatus<CR>", options)
-			vim.keymap.set("n", "<leader>gb", ":TigBlame<CR>", options)
-		end,
+		keys = {
+			{ "<leader>gs", ":TigStatus<CR>", noremap = true, silent = true, desc = "Show git status" },
+			{ "<leader>gb", ":TigBlame<CR>", noremap = true, silent = true, desc = "Show git blame" },
+		},
 	},
 	{
 		"sindrets/diffview.nvim",
@@ -55,5 +54,13 @@ return {
 				{ noremap = true, silent = true, desc = "Show file history" }
 			)
 		end,
+	},
+	{
+		"linrongbin16/gitlinker.nvim",
+		cmd = "GitLink",
+		opts = {},
+		keys = {
+			{ "<leader>gl", ":GitLink!<CR>", mode = { "n", "v" }, desc = "Open git link" },
+		},
 	},
 }
