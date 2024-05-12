@@ -125,7 +125,7 @@ return {
 		end,
 	},
 	{
-    -- Show preview on quickfix
+		-- Show preview on quickfix
 		"kevinhwang91/nvim-bqf",
 		event = "VeryLazy",
 		config = function()
@@ -136,6 +136,18 @@ return {
 			require("bqf").setup({
 				preview = {
 					border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+				},
+			})
+		end,
+	},
+	{
+		-- Highlight code chunk according to current cursor position
+		"shellRaining/hlchunk.nvim",
+		event = "UIEnter",
+		config = function()
+			require("hlchunk").setup({
+				line_num = {
+					enable = false,
 				},
 			})
 		end,
