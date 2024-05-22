@@ -14,6 +14,7 @@ return {
 				ensure_installed = {
 					"bashls",
 					"lua_ls",
+          "marksman",
 					"tsserver",
 					"stylelint_lsp",
 					"solargraph",
@@ -61,7 +62,16 @@ return {
 			require("mason").setup()
 
 			require("mason-null-ls").setup({
-				ensure_installed = { "cspell", "shellcheck", "stylua", "markuplint", "eslint_d", "prettierd", "biome" },
+				ensure_installed = {
+					"cspell",
+					"shellcheck",
+					"stylua",
+					"markdownlint",
+					"markuplint",
+					"eslint_d",
+					"prettierd",
+					"biome",
+				},
 				automatic_installation = true,
 				methods = {
 					code_actions = false,
@@ -89,6 +99,11 @@ return {
 					null_ls.builtins.formatting.stylua.with({
 						condition = function()
 							return vim.fn.executable("stylua") > 0
+						end,
+					}),
+					null_ls.builtins.formatting.markdownlint.with({
+						condition = function()
+							return vim.fn.executable("markdownlint") > 0
 						end,
 					}),
 					null_ls.builtins.diagnostics.markuplint.with({
