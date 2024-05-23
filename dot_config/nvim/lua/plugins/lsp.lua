@@ -14,7 +14,8 @@ return {
 				ensure_installed = {
 					"bashls",
 					"lua_ls",
-          "marksman",
+					"marksman",
+					"lemminx",
 					"tsserver",
 					"stylelint_lsp",
 					"solargraph",
