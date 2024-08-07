@@ -38,10 +38,7 @@ config.font = wezterm.font_with_fallback({
 local mux = wezterm.mux
 
 wezterm.on("gui-startup", function(cmd)
-  local tab, pane, window = mux.spawn_window(cmd or {})
-
-  -- Starts full screen from the begining
-  window:gui_window():toggle_fullscreen()
+  local pane = mux.spawn_window(cmd or {})
 
   pane:split { direction = 'Bottom', size = 0.1 }
   pane:split { direction = 'Left', size = 0.9 }
