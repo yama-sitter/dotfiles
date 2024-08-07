@@ -15,10 +15,6 @@ return {
 				elseif string.match(file_name, "^diffview.+") then
 					-- Allow to close the buffer which opened by diffview
 					vim.cmd("tabclose")
-				elseif #vim.api.nvim_list_wins() > 1 then
-					vim.cmd("close")
-					-- Allow to close the buffer which opened by gitsigns
-					vim.cmd("BWipeout! glob=gitsigns*")
 				else
 					vim.cmd("BWipeout! this")
 				end
