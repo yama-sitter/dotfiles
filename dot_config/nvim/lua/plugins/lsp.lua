@@ -48,6 +48,10 @@ return {
 			vim.diagnostic.config({
 				virtual_text = false,
 			})
+
+			vim.keymap.set("n", "<leader>fm", function()
+				vim.lsp.buf.format({ async = false })
+			end)
 		end,
 	},
 	{
@@ -182,10 +186,6 @@ return {
 					-- 		end,
 					-- 	})
 					-- end
-
-					vim.keymap.set("n", "<leader>fm", function()
-						vim.lsp.buf.format({ async = false })
-					end)
 				end,
 			})
 		end,
