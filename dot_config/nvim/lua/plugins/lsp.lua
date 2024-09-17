@@ -19,6 +19,7 @@ return {
 					"tsserver",
 					"stylelint_lsp",
 					"solargraph",
+					"rust_analyzer",
 				},
 				automatic_installation = true,
 			})
