@@ -173,19 +173,19 @@ return {
 				-- Diagnostic sources are run when exiting insert mode
 				update_in_insert = false,
 				on_attach = function(client, bufnr)
-					-- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+					local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 					-- Format on save
-					-- if client.supports_method("textDocument/formatting") then
-					-- 	vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-					-- 	vim.api.nvim_create_autocmd("BufWritePre", {
-					-- 		group = augroup,
-					-- 		buffer = bufnr,
-					-- 		callback = function()
-					-- 			vim.lsp.buf.format({ async = false })
-					-- 		end,
-					-- 	})
-					-- end
+					if client.supports_method("textDocument/formatting") then
+						vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+						vim.api.nvim_create_autocmd("BufWritePre", {
+							group = augroup,
+							buffer = bufnr,
+							callback = function()
+								vim.lsp.buf.format({ async = false })
+							end,
+						})
+					end
 				end,
 			})
 		end,
