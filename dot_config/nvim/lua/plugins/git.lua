@@ -4,13 +4,6 @@ return {
 		"lewis6991/gitsigns.nvim",
 		event = "VeryLazy",
 		opts = {
-			signs = {
-				change = { numhl = "GitSignsChangeNr" },
-				delete = { numhl = "GitSignsDeleteNr" },
-				topdelete = { numhl = "GitSignsDeleteNr" },
-				changedelete = { numhl = "GitSignsChangeNr" },
-				untracked = { numhl = "GitSignsAddNr" },
-			},
 			signcolumn = false,
 			numhl = true,
 
