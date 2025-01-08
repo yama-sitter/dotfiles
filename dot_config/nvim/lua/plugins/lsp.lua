@@ -14,11 +14,10 @@ return {
 				ensure_installed = {
 					"bashls",
 					"lua_ls",
-					"marksman",
 					"lemminx",
 					"tsserver",
 					"stylelint_lsp",
-					"solargraph",
+					"ruby_lsp",
 					"rust_analyzer",
 				},
 				automatic_installation = true,
