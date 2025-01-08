@@ -132,6 +132,8 @@ return {
 						condition = function(utils)
 							return vim.fn.executable("eslint_d") > 0
 								and utils.root_has_file({
+									"eslint.config.mjs",
+									"eslint.config.js",
 									".eslintrc.js",
 									".eslintrc.json",
 									".eslintrc.yaml",
