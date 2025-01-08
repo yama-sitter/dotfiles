@@ -47,6 +47,10 @@ if [[ -d {{ .wezterm_path }} ]]; then
   export PATH="{{ .wezterm_path }}:$PATH"
 fi
 
+# MySQL
+export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql-client@8.0/bin:$PATH"
+
 # For mysql2 installation using ruby bundler
 export LIBRARY_PATH=$LIBRARY_PATH:$(brew --prefix zstd)/lib/
 
