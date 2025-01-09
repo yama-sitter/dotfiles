@@ -102,7 +102,7 @@ return {
 			-- Add keymap to search for TODOs with telescope
 			vim.keymap.set(
 				"n",
-				"<leader>tt",
+				"<leader>td",
 				":TodoTelescope keywords=TODO theme=ivy path_display={'smart'}<CR>",
 				{ noremap = true, silent = true, desc = "Search for TODOs" }
 			)
@@ -169,7 +169,7 @@ return {
 		end,
 	},
 	{
-    -- File browser
+		-- File browser
 		"stevearc/oil.nvim",
 		event = "VeryLazy",
 		dependencies = {

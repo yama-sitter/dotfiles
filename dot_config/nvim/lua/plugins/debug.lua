@@ -1,5 +1,35 @@
 return {
 	{
+		"nvim-neotest/neotest",
+		event = "VeryLazy",
+		dependencies = {
+			"nvim-neotest/nvim-nio",
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"olimorris/neotest-rspec",
+			"nvim-neotest/neotest-jest",
+      "marilari88/neotest-vitest",
+		},
+		config = function()
+			require("neotest").setup({
+				adapters = {
+					require("neotest-rspec"),
+          require("neotest-jest"),
+          require("neotest-vitest"),
+				},
+			})
+
+			local keymap = vim.keymap.set
+			local opts = { noremap = true, silent = true }
+			keymap("n", "<leader>tt", ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>', opts)
+			keymap("n", "<leader>to", ':lua require("neotest").output.open({ enter = true, last_run = true })<CR>', opts)
+			-- keymap("n", "<leader>to", ':lua require("neotest").output_panel.toggle()<CR>', opts)
+			-- keymap("n", "<leader>tc", ':lua require("neotest").output_panel.clear()<CR>', opts)
+			keymap("n", "<leader>ts", ':lua require("neotest").summary.toggle()<CR>', opts)
+		end,
+	},
+	{
 		"mfussenegger/nvim-dap",
 		enabled = false,
 		event = "VeryLazy",
@@ -81,28 +111,6 @@ return {
 			keymap("n", "<leader>wa", ':lua require("dapui").elements.watches.add()<CR>', opts)
 			keymap("n", "<leader>wr", ':lua require("dapui").elements.watches.remove()<CR>', opts)
 			keymap("n", "<leader>e", ':lua require("dapui").eval()<CR>', opts)
-		end,
-	},
-	{
-		"David-Kunz/jester",
-		ft = {
-			"typescript",
-			"typescriptreact",
-			"javascript",
-			"javacriptreact",
-		},
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
-		config = function()
-			require("jester").setup({
-				path_to_jest_run = "npx jest",
-				terminal_cmd = ":split | terminal",
-			})
-
-			local opts = { noremap = true, silent = true }
-			vim.keymap.set("n", "<leader>ja", ':lua require"jester".run_file()<CR>', opts)
-			vim.keymap.set("n", "<leader>js", ':lua require"jester".run()<CR>', opts)
 		end,
 	},
 	{
