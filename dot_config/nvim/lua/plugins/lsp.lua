@@ -230,4 +230,16 @@ return {
 			end, { noremap = true })
 		end,
 	},
+	{
+		"smjonas/inc-rename.nvim",
+		config = function()
+			require("inc_rename").setup()
+
+			local opts = { noremap = true, silent = true }
+			-- vim.keymap.set("n", "<leader>rn", ":IncRename ", opts)
+			vim.keymap.set("n", "<leader>rn", function()
+				return ":IncRename " .. vim.fn.expand("<cword>")
+			end, { expr = true })
+		end,
+	},
 }
