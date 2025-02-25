@@ -15,7 +15,7 @@ return {
 					"bashls",
 					"lua_ls",
 					"lemminx",
-					"tsserver",
+					"ts_ls",
 					"stylelint_lsp",
 					"ruby_lsp",
 					"rust_analyzer",
