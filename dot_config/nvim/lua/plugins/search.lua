@@ -8,6 +8,7 @@ return {
 			"BurntSushi/ripgrep",
 			"nvim-tree/nvim-web-devicons",
 			"nvim-telescope/telescope-file-browser.nvim",
+			"nvim-telescope/telescope-live-grep-args.nvim",
 		},
 		config = function()
 			local telescope = require("telescope")
@@ -58,6 +59,7 @@ return {
 			})
 
 			telescope.load_extension("file_browser")
+			telescope.load_extension("live_grep_args")
 
 			local builtin = require("telescope.builtin")
 			local function find_files()
@@ -75,6 +77,11 @@ return {
 			vim.keymap.set("n", "<leader>dd", builtin.lsp_definitions, opts)
 			vim.keymap.set("n", "<leader>bb", ":Telescope file_browser theme=ivy<CR>", opts)
 			vim.keymap.set("n", "<leader>gg", builtin.live_grep, opts)
+			vim.keymap.set(
+				"n",
+				"<leader>ga",
+				":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>"
+			)
 
 			require("config.functions")
 
