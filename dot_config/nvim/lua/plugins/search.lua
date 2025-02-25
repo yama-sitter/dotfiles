@@ -169,7 +169,7 @@ return {
 			)
 			vim.keymap.set(
 				"n",
-				"<leader>aa",
+				"<leader>ma",
 				":Telescope vim_bookmarks all theme=ivy<CR>",
 				{ noremap = true, silent = true, desc = "Show all bookmarks" }
 			)
