@@ -87,4 +87,54 @@ return {
 			vim.keymap.set("i", "<C-s>", "<Plug>(copilot-suggest)", opts)
 		end,
 	},
+	{
+		"yetone/avante.nvim",
+		event = "VeryLazy",
+		lazy = false,
+		version = false,
+		dependencies = {
+			"stevearc/dressing.nvim",
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			"hrsh7th/nvim-cmp",
+			"nvim-tree/nvim-web-devicons",
+			"github/copilot.vim",
+		},
+		build = "make",
+		opts = {
+			provider = "copilot",
+			auto_suggestions_provider = "copilot",
+			behaviour = {
+				auto_suggestions = true,
+				auto_set_highlight_group = true,
+				auto_set_keymaps = true,
+				auto_apply_diff_after_generation = true,
+				support_paste_from_clipboard = true,
+				minimize_diff = true,
+			},
+			windows = {
+				position = "right",
+				width = 30,
+				sidebar_header = {
+					align = "center",
+					rounded = false,
+				},
+				ask = {
+					floating = true,
+					start_insert = true,
+					border = "rounded",
+				},
+			},
+			copilot = {
+				model = "gpt-4o-2024-05-13",
+				max_tokens = 4096,
+			},
+			mappings = {
+				submit = {
+					normal = "<CR>",
+					insert = "<C-y>",
+				},
+			},
+		},
+	},
 }
