@@ -121,6 +121,12 @@ return {
 					command_palette = true,
 					long_message_to_split = true,
 				},
+				routes = {
+					{
+						filter = { event = "notify", error = false, find = "Client rubocop quit" },
+						opts = { skip = true },
+					},
+				},
 			})
 		end,
 	},

@@ -76,6 +76,7 @@ return {
 					"eslint_d",
 					"prettierd",
 					"biome",
+					"rubocop",
 				},
 				automatic_installation = true,
 				methods = {
