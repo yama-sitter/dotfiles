@@ -8,13 +8,9 @@ return {
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 			"onsails/lspkind.nvim",
-			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
 		},
 		config = function()
-			require("luasnip.loaders.from_vscode").lazy_load()
-
 			local cmp = require("cmp")
 
 			cmp.setup({
@@ -35,7 +31,6 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "buffer" },
 					{ name = "path" },
-					{ name = "luasnip" },
 				}),
 				formatting = {
 					fields = { "abbr", "kind", "menu" },
