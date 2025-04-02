@@ -134,6 +134,7 @@ return {
 								and utils.root_has_file({
 									"eslint.config.mjs",
 									"eslint.config.js",
+									"eslint.config.ts",
 									".eslintrc.js",
 									".eslintrc.json",
 									".eslintrc.yaml",
