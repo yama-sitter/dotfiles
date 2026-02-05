@@ -1,0 +1,5 @@
+[worktree]
+basedir = "~/Sources"
+
+[naming]
+template = '{{.Host}}/{{.Owner}}/{{.Repository}}={{.Branch}}'

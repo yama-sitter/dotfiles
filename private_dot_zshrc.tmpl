@@ -192,9 +192,20 @@ function fzf-kill() {
 }
 alias fkill='fzf-kill'
 
-function fzf-ghq-cd() {
+function fzf-ghq-gwq-cd() {
   local root="$(ghq root)"
-  local repo="$(ghq list | fzf --preview="ls -AF --color=always ${root}/{1}")"
+  local line repo
+
+  line="$({
+    ghq list | grep -v "=" | while read -r r; do echo "[repo] $r"; done
+    command find "$root" -maxdepth 4 -type d -name "*=*" 2>/dev/null | while read -r p; do
+      echo "[tree] ${p#$root/}"
+    done
+  } | fzf --preview="ls -AF --color=always ${root}/\$(echo {} | cut -d' ' -f2-)")"
+
+  # プレフィックスを除去してパスのみ取得
+  repo="${line#* }"
+
   if [ -n "${repo}" ]; then
     cd "${root}/${repo}"
     zle accept-line
@@ -203,8 +214,8 @@ function fzf-ghq-cd() {
     return 1
   fi
 }
-zle -N fzf-ghq-cd
-bindkey '^v' fzf-ghq-cd
+zle -N fzf-ghq-gwq-cd
+bindkey '^v' fzf-ghq-gwq-cd
 
 function fzf-git-checkout() {
   local branches branch
