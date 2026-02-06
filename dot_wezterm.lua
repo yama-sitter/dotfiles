@@ -96,6 +96,11 @@ config.keys = {
     mods = 'SHIFT|CMD',
     action = act.ActivatePaneDirection 'Down',
   },
+  {
+    key = 'Enter',
+    mods = 'SHIFT',
+    action = act.SendString('\n'),
+  }
 }
 
 -- Resize pane
@@ -111,5 +116,7 @@ config.key_tables = {
     { key = 'Escape', action = 'PopKeyTable' },
   },
 }
+
+config.audible_bell = 'SystemBeep'
 
 return config
