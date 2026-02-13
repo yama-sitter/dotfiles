@@ -21,26 +21,23 @@ return {
 					"rust_analyzer",
 				},
 				automatic_installation = true,
+				automatic_enable = true,
 			})
 
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local settings = {
-				lua_ls = {
+
+			vim.lsp.config("*", {
+				capabilities = capabilities,
+			})
+
+			vim.lsp.config("lua_ls", {
+				settings = {
 					Lua = {
 						diagnostics = {
 							globals = { "vim" },
 						},
 					},
 				},
-			}
-
-			mason_lspconfig.setup_handlers({
-				function(server_name)
-					require("lspconfig")[server_name].setup({
-						capabilities = capabilities,
-						settings = settings[server_name],
-					})
-				end,
 			})
 
 			-- Disable inline diagnostics
