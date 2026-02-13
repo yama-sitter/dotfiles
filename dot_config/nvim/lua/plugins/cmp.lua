@@ -120,9 +120,13 @@ return {
 					border = "rounded",
 				},
 			},
-			copilot = {
-				model = "gpt-4o-2024-05-13",
-				max_tokens = 4096,
+			providers = {
+				copilot = {
+					model = "gpt-4o-2024-05-13",
+					extra_request_body = {
+						max_tokens = 4096,
+					},
+				},
 			},
 			mappings = {
 				submit = {
