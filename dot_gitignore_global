@@ -1,0 +1,9 @@
+.envrc
+.null-ls*
+CLAUDE*
+!/CLAUDE*
+.claude
+.mcp*
+.serena
+.docs
+.worktree
