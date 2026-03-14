@@ -23,7 +23,7 @@ config.inactive_pane_hsb = {
 -------
 
 config.use_ime = true
-config.font_size = 14
+config.font_size = 22 
 
 -- Specify fonts with priority
 config.font = wezterm.font_with_fallback({
