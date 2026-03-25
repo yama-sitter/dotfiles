@@ -200,14 +200,17 @@ function fzf-ghq-gwq-cd() {
   local line repo
 
   line="$({
-    ghq list | grep -v "=" | while read -r r; do echo "[repo] $r"; done
+    ghq list | grep -v "=" | while read -r r; do echo "$r [repo] ${r#*/}"; done
     command find "$root" -maxdepth 4 -type d -name "*=*" 2>/dev/null | while read -r p; do
-      echo "[tree] ${p#$root/}"
+      local rel="${p#$root/}"
+      local rb="${rel##*/}"
+      local owner="${rel%/*}"
+      owner="${owner##*/}"
+      echo "$rel [tree] ${owner}/${rb%%=*} | ${rb#*=}"
     done
-  } | fzf --preview="ls -AF --color=always ${root}/\$(echo {} | cut -d' ' -f2-)")"
+  } | fzf --with-nth=2..)"
 
-  # プレフィックスを除去してパスのみ取得
-  repo="${line#* }"
+  repo="${line%% *}"
 
   if [ -n "${repo}" ]; then
     cd "${root}/${repo}"
