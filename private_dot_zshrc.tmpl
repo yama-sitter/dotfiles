@@ -287,3 +287,27 @@ function fzf-git-branch-delete() {
     git branch -D $(echo "$branch" | sed "s/.* //") && fzf-git-branch-delete
 }
 alias fgbd='fzf-git-branch-delete'
+
+function fzf-agent-memory() {
+  local base="$HOME/.agent-memory"
+  local file
+  file="$(fd --type f --extension md . "$base" \
+    | sed "s#^$base/##" \
+    | fzf --preview "bat --color=always --style=header,grid $base/{}" \
+          --preview-window=right:60%)"
+  if [[ -n "$file" ]]; then
+    vi "$base/$file"
+    print -s "vi $base/$file"
+    if [[ -n "$WIDGET" ]]; then
+      zle accept-line
+    fi
+  else
+    if [[ -n "$WIDGET" ]]; then
+      zle reset-prompt
+    fi
+    return 1
+  fi
+}
+zle -N fzf-agent-memory
+bindkey '^]' fzf-agent-memory
+alias fmemo='fzf-agent-memory'
