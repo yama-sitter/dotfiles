@@ -293,6 +293,7 @@ function fzf-agent-memory() {
   local file
   file="$(fd --type f --extension md . "$base" \
     | sed "s#^$base/##" \
+    | sort -t/ -k2,2 -r \
     | fzf --preview "bat --color=always --style=header,grid $base/{}" \
           --preview-window=right:60%)"
   if [[ -n "$file" ]]; then
