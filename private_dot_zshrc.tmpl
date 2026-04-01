@@ -290,12 +290,20 @@ alias fgbd='fzf-git-branch-delete'
 
 function fzf-agent-memory() {
   local base="$HOME/.agent-memory"
-  local file
-  file="$(fd --type f --extension md . "$base" \
+  local line file
+  line="$(fd --type f --extension md . "$base" \
     | sed "s#^$base/##" \
     | sort -t/ -k2,2 -r \
-    | fzf --preview "bat --color=always --style=header,grid $base/{}" \
+    | awk -F/ '{
+        date = $2; sub(/_.*/, "", date)
+        rest = substr($0, length($1) + 2)
+        sub(/^[^_]*_/, "", rest)
+        printf "%s\t%s\t%s\t%s\n", $0, $1, date, rest
+      }' \
+    | fzf --delimiter='\t' --with-nth=2.. \
+          --preview "bat --color=always --style=header,grid $base/{1}" \
           --preview-window=right:60%)"
+  file="${line%%$'\t'*}"
   if [[ -n "$file" ]]; then
     vi "$base/$file"
     print -s "vi $base/$file"
