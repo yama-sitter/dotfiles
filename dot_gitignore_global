@@ -2,6 +2,7 @@
 .null-ls*
 CLAUDE*
 !/CLAUDE*
+CLAUDE.local.md
 .claude
 .mcp*
 .serena
