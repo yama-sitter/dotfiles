@@ -38,11 +38,11 @@ return {
 						mode = "text",
 					}),
 				},
-				snippet = {
-					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
-					end,
-				},
+				-- snippet = {
+				-- 	expand = function(args)
+				-- 		require("luasnip").lsp_expand(args.body)
+				-- 	end,
+				-- },
 			})
 
 			cmp.setup.cmdline({ "/", "?" }, {
@@ -63,6 +63,7 @@ return {
 	},
 	{
 		"github/copilot.vim",
+		enabled = false,
 		lazy = false,
 		config = function()
 			-- Disable tab mapping
@@ -87,6 +88,7 @@ return {
 		event = "VeryLazy",
 		lazy = false,
 		version = false,
+		enabled = false,
 		dependencies = {
 			"stevearc/dressing.nvim",
 			"nvim-lua/plenary.nvim",
