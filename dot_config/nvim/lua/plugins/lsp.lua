@@ -21,7 +21,11 @@ return {
 					"rust_analyzer",
 				},
 				automatic_installation = true,
-				automatic_enable = true,
+				-- stylua is installed via mason-null-ls as a formatter, not a language
+				-- server. nvim-lspconfig also ships an (unrelated) "stylua" server
+				-- definition using the removed `--lsp` flag, so it must be excluded
+				-- here or automatic_enable starts it as a broken LSP client.
+				automatic_enable = { exclude = { "stylua" } },
 			})
 
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -188,6 +192,12 @@ return {
 				-- 	end
 				-- end,
 			})
+
+			-- none-ls starts its own client, so nvim-lspconfig's :LspRestart reports
+			-- "Invalid server name 'null-ls'" unless a config is registered.
+			vim.lsp.config["null-ls"] = {
+				cmd = require("null-ls.rpc").start,
+			}
 		end,
 	},
 	{
